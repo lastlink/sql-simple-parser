@@ -18,7 +18,7 @@ describe("Example Sqlite", () => {
         .ToModel();
 
       // write to json file
-      await fs.writeFileSync("sqliteOutput.json", JSON.stringify(models));
+      await fs.writeFileSync("output-sqlite.json", JSON.stringify(models));
     }
     await runSample();
     expect(1).toBeTruthy();
