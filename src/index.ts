@@ -1,3 +1,4 @@
+import { AlterTable, CONSTRAINT, CONSTRAINT_Foreign_Key, CONSTRAINT_Primary_Key, CreateTable, Foreign_Key, Primary_Key } from "./contants";
 import {
   DatabaseModel,
   ForeignKeyModel,
@@ -76,12 +77,12 @@ export class SqlSimpleParser {
 
       var tmp = lines[i].trim();
 
-      var propertyRow = tmp.substring(0, 12).toLowerCase();
+      var propertyRow = tmp.toLowerCase().trim();
 
       //Parse Table
-      if (propertyRow === "create table") {
+      if (propertyRow.indexOf(CreateTable) != -1) {
         //Parse row
-        var name = tmp.substring(12).trim();
+        var name = propertyRow.replace(CreateTable, "").trim();
 
         //Parse Table Name
         name = this.ParseTableName(name);
@@ -98,7 +99,7 @@ export class SqlSimpleParser {
       else if (
         tmp !== "(" &&
         currentTableModel != null &&
-        propertyRow !== "alter table "
+        propertyRow.indexOf(AlterTable) == -1
       ) {
         //Parse the row
         var name = tmp.substring(
@@ -112,26 +113,26 @@ export class SqlSimpleParser {
         //Add special constraints
         if (this.MODE_SQLSERVER) {
           if (
-            tmp.indexOf("CONSTRAINT") !== -1 &&
-            tmp.indexOf("PRIMARY KEY") !== -1
+            propertyType.indexOf(CONSTRAINT) !== -1 &&
+            propertyType.indexOf(Primary_Key) !== -1
           ) {
-            propertyType = "constrain primary key";
+            propertyType = CONSTRAINT_Primary_Key;
           }
 
           if (
-            tmp.indexOf("CONSTRAINT") !== -1 &&
-            tmp.indexOf("FOREIGN KEY") !== -1
+            propertyType.indexOf(CONSTRAINT) !== -1 &&
+            propertyType.indexOf(Primary_Key) !== -1
           ) {
-            propertyType = "constrain foreign key";
+            propertyType = CONSTRAINT_Foreign_Key;
           }
         }
 
         //Verify if this is a property that doesn't have a relationship (One minute of silence for the property)
         var normalProperty =
-          propertyType !== "primary key" &&
-          propertyType !== "foreign key" &&
-          propertyType !== "constrain primary key" &&
-          propertyType !== "constrain foreign key";
+          propertyType !== Primary_Key &&
+          propertyType !== Foreign_Key &&
+          propertyType !== CONSTRAINT_Primary_Key &&
+          propertyType !== CONSTRAINT_Foreign_Key;
 
         //Parse properties that don't have relationships
         if (normalProperty) {
@@ -185,8 +186,8 @@ export class SqlSimpleParser {
 
         //Parse Primary Key
         if (
-          propertyType === "primary key" ||
-          propertyType === "constrain primary key"
+          propertyType === Primary_Key ||
+          propertyType === CONSTRAINT_Primary_Key
         ) {
           if (!this.MODE_SQLSERVER) {
             var primaryKey = name.replace("PRIMARY KEY (", "").replace(")", "");
@@ -203,7 +204,7 @@ export class SqlSimpleParser {
             var start = i + 2;
             var end = 0;
             if (
-              name.indexOf("PRIMARY KEY") !== -1 &&
+              name.indexOf(Primary_Key) !== -1 &&
               name.indexOf("CLUSTERED") === -1
             ) {
               var primaryKey = name
@@ -249,8 +250,8 @@ export class SqlSimpleParser {
         debugger;
         //Parse Foreign Key
         if (
-          propertyType === "foreign key" ||
-          propertyType === "constrain foreign key"
+          propertyType === Foreign_Key ||
+          propertyType === CONSTRAINT_Foreign_Key
         ) {
           if (!this.MODE_SQLSERVER) {
             this.ParseMySQLForeignKey(name, currentTableModel);
