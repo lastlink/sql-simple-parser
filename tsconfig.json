@@ -104,8 +104,9 @@
     "skipLibCheck": true                                 /* Skip type checking all .d.ts files. */
   },
   "include": [
+    // "examples",
     "src", "./package.json"
-    // "src",
+// , "tests/example_sqlite.ts"    // "src",
     // "lib"
   ],
   "exclude": [
