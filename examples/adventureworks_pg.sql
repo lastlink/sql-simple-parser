@@ -1,6 +1,6 @@
 /*
 sql generated using:
- * Package: little-mermaid-2-the-sql
+ * Package: @funktechno/little-mermaid-2-the-sql
  * Version: 0.0.3
  * databaseInfo: postgres
 */
@@ -11,7 +11,7 @@ CREATE TABLE "humanresources_department" (
 	"groupname" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("departmentid")
-)
+);
 
 CREATE TABLE "humanresources_shift" (
 	"shiftid" serial NOT NULL,
@@ -20,7 +20,7 @@ CREATE TABLE "humanresources_shift" (
 	"endtime" time NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("shiftid")
-)
+);
 
 CREATE TABLE "person_addresstype" (
 	"addresstypeid" serial NOT NULL,
@@ -28,49 +28,49 @@ CREATE TABLE "person_addresstype" (
 	"rowguid" uuid NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("addresstypeid")
-)
+);
 
 CREATE TABLE "person_businessentity" (
 	"businessentityid" serial NOT NULL,
 	"rowguid" uuid NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("businessentityid")
-)
+);
 
 CREATE TABLE "person_contacttype" (
 	"contacttypeid" serial NOT NULL,
 	"name" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("contacttypeid")
-)
+);
 
 CREATE TABLE "person_countryregion" (
 	"countryregioncode" varchar NOT NULL,
 	"name" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("countryregioncode")
-)
+);
 
 CREATE TABLE "person_phonenumbertype" (
 	"phonenumbertypeid" serial NOT NULL,
 	"name" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("phonenumbertypeid")
-)
+);
 
 CREATE TABLE "production_culture" (
 	"cultureid" bpchar NOT NULL,
 	"name" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("cultureid")
-)
+);
 
 CREATE TABLE "production_illustration" (
 	"illustrationid" serial NOT NULL,
 	"diagram" xml,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("illustrationid")
-)
+);
 
 CREATE TABLE "production_location" (
 	"locationid" serial NOT NULL,
@@ -79,7 +79,7 @@ CREATE TABLE "production_location" (
 	"availability" numeric NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("locationid")
-)
+);
 
 CREATE TABLE "production_productcategory" (
 	"productcategoryid" serial NOT NULL,
@@ -87,7 +87,7 @@ CREATE TABLE "production_productcategory" (
 	"rowguid" uuid NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productcategoryid")
-)
+);
 
 CREATE TABLE "production_productdescription" (
 	"productdescriptionid" serial NOT NULL,
@@ -95,7 +95,7 @@ CREATE TABLE "production_productdescription" (
 	"rowguid" uuid NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productdescriptionid")
-)
+);
 
 CREATE TABLE "production_productmodel" (
 	"productmodelid" serial NOT NULL,
@@ -105,7 +105,7 @@ CREATE TABLE "production_productmodel" (
 	"rowguid" uuid NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productmodelid")
-)
+);
 
 CREATE TABLE "production_productphoto" (
 	"productphotoid" serial NOT NULL,
@@ -115,7 +115,7 @@ CREATE TABLE "production_productphoto" (
 	"largephotofilename" varchar,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productphotoid")
-)
+);
 
 CREATE TABLE "production_productreview" (
 	"productreviewid" serial NOT NULL,
@@ -127,14 +127,14 @@ CREATE TABLE "production_productreview" (
 	"comments" varchar,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productreviewid")
-)
+);
 
 CREATE TABLE "production_scrapreason" (
 	"scrapreasonid" serial NOT NULL,
 	"name" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("scrapreasonid")
-)
+);
 
 CREATE TABLE "production_transactionhistoryarchive" (
 	"transactionid" int(4) NOT NULL,
@@ -147,14 +147,14 @@ CREATE TABLE "production_transactionhistoryarchive" (
 	"actualcost" numeric NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("transactionid")
-)
+);
 
 CREATE TABLE "production_unitmeasure" (
 	"unitmeasurecode" bpchar NOT NULL,
 	"name" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("unitmeasurecode")
-)
+);
 
 CREATE TABLE "purchasing_shipmethod" (
 	"shipmethodid" serial NOT NULL,
@@ -164,7 +164,7 @@ CREATE TABLE "purchasing_shipmethod" (
 	"rowguid" uuid NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("shipmethodid")
-)
+);
 
 CREATE TABLE "sales_creditcard" (
 	"creditcardid" serial NOT NULL,
@@ -174,14 +174,14 @@ CREATE TABLE "sales_creditcard" (
 	"expyear" int(2) NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("creditcardid")
-)
+);
 
 CREATE TABLE "sales_currency" (
 	"currencycode" bpchar NOT NULL,
 	"name" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("currencycode")
-)
+);
 
 CREATE TABLE "sales_salesreason" (
 	"salesreasonid" serial NOT NULL,
@@ -189,7 +189,7 @@ CREATE TABLE "sales_salesreason" (
 	"reasontype" Name NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("salesreasonid")
-)
+);
 
 CREATE TABLE "sales_specialoffer" (
 	"specialofferid" serial NOT NULL,
@@ -204,7 +204,7 @@ CREATE TABLE "sales_specialoffer" (
 	"rowguid" uuid NOT NULL,
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("specialofferid")
-)
+);
 
 CREATE TABLE "person_person" (
 	"businessentityid" int(4) NOT NULL,
@@ -222,7 +222,7 @@ CREATE TABLE "person_person" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("businessentityid"),
 	FOREIGN KEY ("person_person_businessentityid") REFERENCES "person_businessentity"("businessentityid")
-)
+);
 
 CREATE TABLE "production_productmodelillustration" (
 	"productmodelid" int(4) NOT NULL,
@@ -231,7 +231,7 @@ CREATE TABLE "production_productmodelillustration" (
 	PRIMARY KEY("productmodelid","illustrationid"),
 	FOREIGN KEY ("illustrationid") REFERENCES "production_illustration"("illustrationid"),
 	FOREIGN KEY ("productmodelid") REFERENCES "production_productmodel"("productmodelid")
-)
+);
 
 CREATE TABLE "production_productmodelproductdescriptionculture" (
 	"productmodelid" int(4) NOT NULL,
@@ -242,7 +242,7 @@ CREATE TABLE "production_productmodelproductdescriptionculture" (
 	FOREIGN KEY ("cultureid") REFERENCES "production_culture"("cultureid"),
 	FOREIGN KEY ("productdescriptionid") REFERENCES "production_productdescription"("productdescriptionid"),
 	FOREIGN KEY ("productmodelid") REFERENCES "production_productmodel"("productmodelid")
-)
+);
 
 CREATE TABLE "production_productsubcategory" (
 	"productsubcategoryid" serial NOT NULL,
@@ -252,7 +252,7 @@ CREATE TABLE "production_productsubcategory" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productsubcategoryid"),
 	FOREIGN KEY ("productcategoryid") REFERENCES "production_productcategory"("productcategoryid")
-)
+);
 
 CREATE TABLE "purchasing_vendor" (
 	"businessentityid" int(4) NOT NULL,
@@ -265,7 +265,7 @@ CREATE TABLE "purchasing_vendor" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("businessentityid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_businessentity"("businessentityid")
-)
+);
 
 CREATE TABLE "sales_countryregioncurrency" (
 	"countryregioncode" varchar NOT NULL,
@@ -274,7 +274,7 @@ CREATE TABLE "sales_countryregioncurrency" (
 	PRIMARY KEY("countryregioncode","currencycode"),
 	FOREIGN KEY ("countryregioncode") REFERENCES "person_countryregion"("countryregioncode"),
 	FOREIGN KEY ("currencycode") REFERENCES "sales_currency"("currencycode")
-)
+);
 
 CREATE TABLE "sales_currencyrate" (
 	"currencyrateid" serial NOT NULL,
@@ -287,7 +287,7 @@ CREATE TABLE "sales_currencyrate" (
 	PRIMARY KEY("currencyrateid"),
 	FOREIGN KEY ("fromcurrencycode") REFERENCES "sales_currency"("currencycode"),
 	FOREIGN KEY ("tocurrencycode") REFERENCES "sales_currency"("currencycode")
-)
+);
 
 CREATE TABLE "sales_salesterritory" (
 	"territoryid" serial NOT NULL,
@@ -302,7 +302,7 @@ CREATE TABLE "sales_salesterritory" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("territoryid"),
 	FOREIGN KEY ("countryregioncode") REFERENCES "person_countryregion"("countryregioncode")
-)
+);
 
 CREATE TABLE "humanresources_employee" (
 	"businessentityid" int(4) NOT NULL,
@@ -322,7 +322,7 @@ CREATE TABLE "humanresources_employee" (
 	"organizationnode" varchar,
 	PRIMARY KEY("businessentityid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_person"("businessentityid")
-)
+);
 
 CREATE TABLE "person_businessentitycontact" (
 	"businessentityid" int(4) NOT NULL,
@@ -334,7 +334,7 @@ CREATE TABLE "person_businessentitycontact" (
 	FOREIGN KEY ("businessentityid") REFERENCES "person_businessentity"("businessentityid"),
 	FOREIGN KEY ("contacttypeid") REFERENCES "person_contacttype"("contacttypeid"),
 	FOREIGN KEY ("personid") REFERENCES "person_person"("businessentityid")
-)
+);
 
 CREATE TABLE "person_emailaddress" (
 	"businessentityid" int(4) NOT NULL,
@@ -344,7 +344,7 @@ CREATE TABLE "person_emailaddress" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("businessentityid","emailaddressid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_person"("businessentityid")
-)
+);
 
 CREATE TABLE "person_password" (
 	"businessentityid" int(4) NOT NULL,
@@ -354,7 +354,7 @@ CREATE TABLE "person_password" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("businessentityid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_person"("businessentityid")
-)
+);
 
 CREATE TABLE "person_personphone" (
 	"businessentityid" int(4) NOT NULL,
@@ -364,7 +364,7 @@ CREATE TABLE "person_personphone" (
 	PRIMARY KEY("businessentityid","phonenumber","phonenumbertypeid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_person"("businessentityid"),
 	FOREIGN KEY ("phonenumbertypeid") REFERENCES "person_phonenumbertype"("phonenumbertypeid")
-)
+);
 
 CREATE TABLE "person_stateprovince" (
 	"stateprovinceid" serial NOT NULL,
@@ -378,7 +378,7 @@ CREATE TABLE "person_stateprovince" (
 	PRIMARY KEY("stateprovinceid"),
 	FOREIGN KEY ("countryregioncode") REFERENCES "person_countryregion"("countryregioncode"),
 	FOREIGN KEY ("territoryid") REFERENCES "sales_salesterritory"("territoryid")
-)
+);
 
 CREATE TABLE "production_product" (
 	"productid" serial NOT NULL,
@@ -411,7 +411,7 @@ CREATE TABLE "production_product" (
 	FOREIGN KEY ("productsubcategoryid") REFERENCES "production_productsubcategory"("productsubcategoryid"),
 	FOREIGN KEY ("sizeunitmeasurecode") REFERENCES "production_unitmeasure"("unitmeasurecode"),
 	FOREIGN KEY ("weightunitmeasurecode") REFERENCES "production_unitmeasure"("unitmeasurecode")
-)
+);
 
 CREATE TABLE "sales_personcreditcard" (
 	"businessentityid" int(4) NOT NULL,
@@ -420,7 +420,7 @@ CREATE TABLE "sales_personcreditcard" (
 	PRIMARY KEY("businessentityid","creditcardid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_person"("businessentityid"),
 	FOREIGN KEY ("creditcardid") REFERENCES "sales_creditcard"("creditcardid")
-)
+);
 
 CREATE TABLE "humanresources_employeedepartmenthistory" (
 	"businessentityid" int(4) NOT NULL,
@@ -433,7 +433,7 @@ CREATE TABLE "humanresources_employeedepartmenthistory" (
 	FOREIGN KEY ("businessentityid") REFERENCES "humanresources_employee"("businessentityid"),
 	FOREIGN KEY ("departmentid") REFERENCES "humanresources_department"("departmentid"),
 	FOREIGN KEY ("shiftid") REFERENCES "humanresources_shift"("shiftid")
-)
+);
 
 CREATE TABLE "humanresources_employeepayhistory" (
 	"businessentityid" int(4) NOT NULL,
@@ -443,7 +443,7 @@ CREATE TABLE "humanresources_employeepayhistory" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("businessentityid","ratechangedate"),
 	FOREIGN KEY ("businessentityid") REFERENCES "humanresources_employee"("businessentityid")
-)
+);
 
 CREATE TABLE "humanresources_jobcandidate" (
 	"jobcandidateid" serial NOT NULL,
@@ -452,7 +452,7 @@ CREATE TABLE "humanresources_jobcandidate" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("jobcandidateid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "humanresources_employee"("businessentityid")
-)
+);
 
 CREATE TABLE "person_address" (
 	"addressid" serial NOT NULL,
@@ -466,7 +466,7 @@ CREATE TABLE "person_address" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("addressid"),
 	FOREIGN KEY ("stateprovinceid") REFERENCES "person_stateprovince"("stateprovinceid")
-)
+);
 
 CREATE TABLE "production_billofmaterials" (
 	"billofmaterialsid" serial NOT NULL,
@@ -482,7 +482,7 @@ CREATE TABLE "production_billofmaterials" (
 	FOREIGN KEY ("componentid") REFERENCES "production_product"("productid"),
 	FOREIGN KEY ("productassemblyid") REFERENCES "production_product"("productid"),
 	FOREIGN KEY ("unitmeasurecode") REFERENCES "production_unitmeasure"("unitmeasurecode")
-)
+);
 
 CREATE TABLE "production_document" (
 	"title" varchar NOT NULL,
@@ -500,7 +500,7 @@ CREATE TABLE "production_document" (
 	"documentnode" varchar NOT NULL,
 	PRIMARY KEY("documentnode"),
 	FOREIGN KEY ("owner") REFERENCES "humanresources_employee"("businessentityid")
-)
+);
 
 CREATE TABLE "production_productcosthistory" (
 	"productid" int(4) NOT NULL,
@@ -510,7 +510,7 @@ CREATE TABLE "production_productcosthistory" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productid","startdate"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid")
-)
+);
 
 CREATE TABLE "production_productinventory" (
 	"productid" int(4) NOT NULL,
@@ -523,7 +523,7 @@ CREATE TABLE "production_productinventory" (
 	PRIMARY KEY("productid","locationid"),
 	FOREIGN KEY ("locationid") REFERENCES "production_location"("locationid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid")
-)
+);
 
 CREATE TABLE "production_productlistpricehistory" (
 	"productid" int(4) NOT NULL,
@@ -533,7 +533,7 @@ CREATE TABLE "production_productlistpricehistory" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("productid","startdate"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid")
-)
+);
 
 CREATE TABLE "production_productproductphoto" (
 	"productid" int(4) NOT NULL,
@@ -543,7 +543,7 @@ CREATE TABLE "production_productproductphoto" (
 	PRIMARY KEY("productid","productphotoid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid"),
 	FOREIGN KEY ("productphotoid") REFERENCES "production_productphoto"("productphotoid")
-)
+);
 
 CREATE TABLE "production_transactionhistory" (
 	"transactionid" serial NOT NULL,
@@ -557,7 +557,7 @@ CREATE TABLE "production_transactionhistory" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("transactionid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid")
-)
+);
 
 CREATE TABLE "production_workorder" (
 	"workorderid" serial NOT NULL,
@@ -572,7 +572,7 @@ CREATE TABLE "production_workorder" (
 	PRIMARY KEY("workorderid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid"),
 	FOREIGN KEY ("scrapreasonid") REFERENCES "production_scrapreason"("scrapreasonid")
-)
+);
 
 CREATE TABLE "purchasing_productvendor" (
 	"productid" int(4) NOT NULL,
@@ -590,7 +590,7 @@ CREATE TABLE "purchasing_productvendor" (
 	FOREIGN KEY ("businessentityid") REFERENCES "purchasing_vendor"("businessentityid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid"),
 	FOREIGN KEY ("unitmeasurecode") REFERENCES "production_unitmeasure"("unitmeasurecode")
-)
+);
 
 CREATE TABLE "purchasing_purchaseorderheader" (
 	"purchaseorderid" serial NOT NULL,
@@ -609,7 +609,7 @@ CREATE TABLE "purchasing_purchaseorderheader" (
 	FOREIGN KEY ("employeeid") REFERENCES "humanresources_employee"("businessentityid"),
 	FOREIGN KEY ("shipmethodid") REFERENCES "purchasing_shipmethod"("shipmethodid"),
 	FOREIGN KEY ("vendorid") REFERENCES "purchasing_vendor"("businessentityid")
-)
+);
 
 CREATE TABLE "sales_salesperson" (
 	"businessentityid" int(4) NOT NULL,
@@ -624,7 +624,7 @@ CREATE TABLE "sales_salesperson" (
 	PRIMARY KEY("businessentityid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "humanresources_employee"("businessentityid"),
 	FOREIGN KEY ("territoryid") REFERENCES "sales_salesterritory"("territoryid")
-)
+);
 
 CREATE TABLE "sales_salestaxrate" (
 	"salestaxrateid" serial NOT NULL,
@@ -636,7 +636,7 @@ CREATE TABLE "sales_salestaxrate" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("salestaxrateid"),
 	FOREIGN KEY ("stateprovinceid") REFERENCES "person_stateprovince"("stateprovinceid")
-)
+);
 
 CREATE TABLE "sales_shoppingcartitem" (
 	"shoppingcartitemid" serial NOT NULL,
@@ -647,7 +647,7 @@ CREATE TABLE "sales_shoppingcartitem" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("shoppingcartitemid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid")
-)
+);
 
 CREATE TABLE "sales_specialofferproduct" (
 	"specialofferid" int(4) NOT NULL,
@@ -657,7 +657,7 @@ CREATE TABLE "sales_specialofferproduct" (
 	PRIMARY KEY("specialofferid","productid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid"),
 	FOREIGN KEY ("specialofferid") REFERENCES "sales_specialoffer"("specialofferid")
-)
+);
 
 CREATE TABLE "person_businessentityaddress" (
 	"businessentityid" int(4) NOT NULL,
@@ -669,7 +669,7 @@ CREATE TABLE "person_businessentityaddress" (
 	FOREIGN KEY ("addressid") REFERENCES "person_address"("addressid"),
 	FOREIGN KEY ("addresstypeid") REFERENCES "person_addresstype"("addresstypeid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_businessentity"("businessentityid")
-)
+);
 
 CREATE TABLE "production_productdocument" (
 	"productid" int(4) NOT NULL,
@@ -678,7 +678,7 @@ CREATE TABLE "production_productdocument" (
 	PRIMARY KEY("productid","documentnode"),
 	FOREIGN KEY ("documentnode") REFERENCES "production_document"("documentnode"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid")
-)
+);
 
 CREATE TABLE "production_workorderrouting" (
 	"workorderid" int(4) NOT NULL,
@@ -696,7 +696,7 @@ CREATE TABLE "production_workorderrouting" (
 	PRIMARY KEY("workorderid","productid","operationsequence"),
 	FOREIGN KEY ("locationid") REFERENCES "production_location"("locationid"),
 	FOREIGN KEY ("workorderid") REFERENCES "production_workorder"("workorderid")
-)
+);
 
 CREATE TABLE "purchasing_purchaseorderdetail" (
 	"purchaseorderid" int(4) NOT NULL,
@@ -711,7 +711,7 @@ CREATE TABLE "purchasing_purchaseorderdetail" (
 	PRIMARY KEY("purchaseorderid","purchaseorderdetailid"),
 	FOREIGN KEY ("productid") REFERENCES "production_product"("productid"),
 	FOREIGN KEY ("purchaseorderid") REFERENCES "purchasing_purchaseorderheader"("purchaseorderid")
-)
+);
 
 CREATE TABLE "sales_salespersonquotahistory" (
 	"businessentityid" int(4) NOT NULL,
@@ -721,7 +721,7 @@ CREATE TABLE "sales_salespersonquotahistory" (
 	"modifieddate" timestamp NOT NULL,
 	PRIMARY KEY("businessentityid","quotadate"),
 	FOREIGN KEY ("businessentityid") REFERENCES "sales_salesperson"("businessentityid")
-)
+);
 
 CREATE TABLE "sales_salesterritoryhistory" (
 	"businessentityid" int(4) NOT NULL,
@@ -733,7 +733,7 @@ CREATE TABLE "sales_salesterritoryhistory" (
 	PRIMARY KEY("businessentityid","territoryid","startdate"),
 	FOREIGN KEY ("businessentityid") REFERENCES "sales_salesperson"("businessentityid"),
 	FOREIGN KEY ("territoryid") REFERENCES "sales_salesterritory"("territoryid")
-)
+);
 
 CREATE TABLE "sales_store" (
 	"businessentityid" int(4) NOT NULL,
@@ -745,7 +745,7 @@ CREATE TABLE "sales_store" (
 	PRIMARY KEY("businessentityid"),
 	FOREIGN KEY ("businessentityid") REFERENCES "person_businessentity"("businessentityid"),
 	FOREIGN KEY ("salespersonid") REFERENCES "sales_salesperson"("businessentityid")
-)
+);
 
 CREATE TABLE "sales_customer" (
 	"customerid" serial NOT NULL,
@@ -758,7 +758,7 @@ CREATE TABLE "sales_customer" (
 	FOREIGN KEY ("personid") REFERENCES "person_person"("businessentityid"),
 	FOREIGN KEY ("storeid") REFERENCES "sales_store"("businessentityid"),
 	FOREIGN KEY ("territoryid") REFERENCES "sales_salesterritory"("territoryid")
-)
+);
 
 CREATE TABLE "sales_salesorderheader" (
 	"salesorderid" serial NOT NULL,
@@ -795,7 +795,7 @@ CREATE TABLE "sales_salesorderheader" (
 	FOREIGN KEY ("shipmethodid") REFERENCES "purchasing_shipmethod"("shipmethodid"),
 	FOREIGN KEY ("shiptoaddressid") REFERENCES "person_address"("addressid"),
 	FOREIGN KEY ("territoryid") REFERENCES "sales_salesterritory"("territoryid")
-)
+);
 
 CREATE TABLE "sales_salesorderdetail" (
 	"salesorderid" int(4) NOT NULL,
@@ -811,7 +811,7 @@ CREATE TABLE "sales_salesorderdetail" (
 	PRIMARY KEY("salesorderid","salesorderdetailid"),
 	FOREIGN KEY ("salesorderid") REFERENCES "sales_salesorderheader"("salesorderid"),
 	FOREIGN KEY ("specialofferid, sales_salesorderdetail") REFERENCES "sales_specialofferproduct"("specialofferid, sales_specialofferproduct")
-)
+);
 
 CREATE TABLE "sales_salesorderheadersalesreason" (
 	"salesorderid" int(4) NOT NULL,
@@ -820,7 +820,7 @@ CREATE TABLE "sales_salesorderheadersalesreason" (
 	PRIMARY KEY("salesorderid","salesreasonid"),
 	FOREIGN KEY ("salesorderid") REFERENCES "sales_salesorderheader"("salesorderid"),
 	FOREIGN KEY ("salesreasonid") REFERENCES "sales_salesreason"("salesreasonid")
-)
+);
 
 CREATE TABLE "hr_d" (
 	"id" int(4),
@@ -828,7 +828,7 @@ CREATE TABLE "hr_d" (
 	"name" Name,
 	"groupname" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "hr_e" (
 	"id" int(4),
@@ -847,7 +847,7 @@ CREATE TABLE "hr_e" (
 	"rowguid" uuid,
 	"modifieddate" timestamp,
 	"organizationnode" varchar
-)
+);
 
 CREATE TABLE "hr_edh" (
 	"id" int(4),
@@ -857,7 +857,7 @@ CREATE TABLE "hr_edh" (
 	"startdate" date,
 	"enddate" date,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "hr_eph" (
 	"id" int(4),
@@ -866,7 +866,7 @@ CREATE TABLE "hr_eph" (
 	"rate" numeric,
 	"payfrequency" int(2),
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "hr_jc" (
 	"id" int(4),
@@ -874,7 +874,7 @@ CREATE TABLE "hr_jc" (
 	"businessentityid" int(4),
 	"resume" xml,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "hr_s" (
 	"id" int(4),
@@ -883,7 +883,7 @@ CREATE TABLE "hr_s" (
 	"starttime" time,
 	"endtime" time,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "humanresources_vemployee" (
 	"businessentityid" int(4),
@@ -904,7 +904,7 @@ CREATE TABLE "humanresources_vemployee" (
 	"postalcode" varchar,
 	"countryregionname" Name,
 	"additionalcontactinfo" xml
-)
+);
 
 CREATE TABLE "humanresources_vemployeedepartment" (
 	"businessentityid" int(4),
@@ -917,7 +917,7 @@ CREATE TABLE "humanresources_vemployeedepartment" (
 	"department" Name,
 	"groupname" Name,
 	"startdate" date
-)
+);
 
 CREATE TABLE "humanresources_vemployeedepartmenthistory" (
 	"businessentityid" int(4),
@@ -931,7 +931,7 @@ CREATE TABLE "humanresources_vemployeedepartmenthistory" (
 	"groupname" Name,
 	"startdate" date,
 	"enddate" date
-)
+);
 
 CREATE TABLE "humanresources_vjobcandidate" (
 	"jobcandidateid" int(4),
@@ -950,7 +950,7 @@ CREATE TABLE "humanresources_vjobcandidate" (
 	"EMail" varchar,
 	"WebSite" varchar,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "humanresources_vjobcandidateeducation" (
 	"jobcandidateid" int(4),
@@ -966,7 +966,7 @@ CREATE TABLE "humanresources_vjobcandidateeducation" (
 	"Edu.Loc.CountryRegion" varchar,
 	"Edu.Loc.State" varchar,
 	"Edu.Loc.City" varchar
-)
+);
 
 CREATE TABLE "humanresources_vjobcandidateemployment" (
 	"jobcandidateid" int(4),
@@ -980,7 +980,7 @@ CREATE TABLE "humanresources_vjobcandidateemployment" (
 	"Emp.Loc.CountryRegion" varchar,
 	"Emp.Loc.State" varchar,
 	"Emp.Loc.City" varchar
-)
+);
 
 CREATE TABLE "pe_a" (
 	"id" int(4),
@@ -993,7 +993,7 @@ CREATE TABLE "pe_a" (
 	"spatiallocation" varchar,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_at" (
 	"id" int(4),
@@ -1001,14 +1001,14 @@ CREATE TABLE "pe_at" (
 	"name" Name,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_be" (
 	"id" int(4),
 	"businessentityid" int(4),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_bea" (
 	"id" int(4),
@@ -1017,7 +1017,7 @@ CREATE TABLE "pe_bea" (
 	"addresstypeid" int(4),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_bec" (
 	"id" int(4),
@@ -1026,20 +1026,20 @@ CREATE TABLE "pe_bec" (
 	"contacttypeid" int(4),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_cr" (
 	"countryregioncode" varchar,
 	"name" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_ct" (
 	"id" int(4),
 	"contacttypeid" int(4),
 	"name" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_e" (
 	"id" int(4),
@@ -1048,7 +1048,7 @@ CREATE TABLE "pe_e" (
 	"emailaddress" varchar,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_p" (
 	"id" int(4),
@@ -1065,7 +1065,7 @@ CREATE TABLE "pe_p" (
 	"demographics" xml,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_pa" (
 	"id" int(4),
@@ -1074,14 +1074,14 @@ CREATE TABLE "pe_pa" (
 	"passwordsalt" varchar,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_pnt" (
 	"id" int(4),
 	"phonenumbertypeid" int(4),
 	"name" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_pp" (
 	"id" int(4),
@@ -1089,7 +1089,7 @@ CREATE TABLE "pe_pp" (
 	"phonenumber" Phone,
 	"phonenumbertypeid" int(4),
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pe_sp" (
 	"id" int(4),
@@ -1101,7 +1101,7 @@ CREATE TABLE "pe_sp" (
 	"territoryid" int(4),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "person_vadditionalcontactinfo" (
 	"businessentityid" int(4),
@@ -1121,7 +1121,7 @@ CREATE TABLE "person_vadditionalcontactinfo" (
 	"emailtelephonenumber" xml,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_bom" (
 	"id" int(4),
@@ -1134,14 +1134,14 @@ CREATE TABLE "pr_bom" (
 	"bomlevel" int(2),
 	"perassemblyqty" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_c" (
 	"id" bpchar,
 	"cultureid" bpchar,
 	"name" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_d" (
 	"title" varchar,
@@ -1157,14 +1157,14 @@ CREATE TABLE "pr_d" (
 	"rowguid" uuid,
 	"modifieddate" timestamp,
 	"documentnode" varchar
-)
+);
 
 CREATE TABLE "pr_i" (
 	"id" int(4),
 	"illustrationid" int(4),
 	"diagram" xml,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_l" (
 	"id" int(4),
@@ -1173,7 +1173,7 @@ CREATE TABLE "pr_l" (
 	"costrate" numeric,
 	"availability" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_p" (
 	"id" int(4),
@@ -1202,7 +1202,7 @@ CREATE TABLE "pr_p" (
 	"discontinueddate" timestamp,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pc" (
 	"id" int(4),
@@ -1210,7 +1210,7 @@ CREATE TABLE "pr_pc" (
 	"name" Name,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pch" (
 	"id" int(4),
@@ -1219,7 +1219,7 @@ CREATE TABLE "pr_pch" (
 	"enddate" timestamp,
 	"standardcost" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pd" (
 	"id" int(4),
@@ -1227,14 +1227,14 @@ CREATE TABLE "pr_pd" (
 	"description" varchar,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pdoc" (
 	"id" int(4),
 	"productid" int(4),
 	"modifieddate" timestamp,
 	"documentnode" varchar
-)
+);
 
 CREATE TABLE "pr_pi" (
 	"id" int(4),
@@ -1245,7 +1245,7 @@ CREATE TABLE "pr_pi" (
 	"quantity" int(2),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_plph" (
 	"id" int(4),
@@ -1254,7 +1254,7 @@ CREATE TABLE "pr_plph" (
 	"enddate" timestamp,
 	"listprice" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pm" (
 	"id" int(4),
@@ -1264,20 +1264,20 @@ CREATE TABLE "pr_pm" (
 	"instructions" xml,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pmi" (
 	"productmodelid" int(4),
 	"illustrationid" int(4),
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pmpdc" (
 	"productmodelid" int(4),
 	"productdescriptionid" int(4),
 	"cultureid" bpchar,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pp" (
 	"id" int(4),
@@ -1287,14 +1287,14 @@ CREATE TABLE "pr_pp" (
 	"largephoto" bytea,
 	"largephotofilename" varchar,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_ppp" (
 	"productid" int(4),
 	"productphotoid" int(4),
 	"primary" Flag NOT NULL,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_pr" (
 	"id" int(4),
@@ -1306,7 +1306,7 @@ CREATE TABLE "pr_pr" (
 	"rating" int(4),
 	"comments" varchar,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_psc" (
 	"id" int(4),
@@ -1315,14 +1315,14 @@ CREATE TABLE "pr_psc" (
 	"name" Name,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_sr" (
 	"id" int(4),
 	"scrapreasonid" int(4),
 	"name" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_th" (
 	"id" int(4),
@@ -1335,7 +1335,7 @@ CREATE TABLE "pr_th" (
 	"quantity" int(4),
 	"actualcost" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_tha" (
 	"id" int(4),
@@ -1348,14 +1348,14 @@ CREATE TABLE "pr_tha" (
 	"quantity" int(4),
 	"actualcost" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_um" (
 	"id" bpchar,
 	"unitmeasurecode" bpchar,
 	"name" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_w" (
 	"id" int(4),
@@ -1368,7 +1368,7 @@ CREATE TABLE "pr_w" (
 	"duedate" timestamp,
 	"scrapreasonid" int(2),
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pr_wr" (
 	"id" int(4),
@@ -1384,7 +1384,7 @@ CREATE TABLE "pr_wr" (
 	"plannedcost" numeric,
 	"actualcost" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "production_vproductmodelcatalogdescription" (
 	"productmodelid" int(4),
@@ -1412,7 +1412,7 @@ CREATE TABLE "production_vproductmodelcatalogdescription" (
 	"riderexperience" varchar,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "production_vproductmodelinstructions" (
 	"productmodelid" int(4),
@@ -1426,7 +1426,7 @@ CREATE TABLE "production_vproductmodelinstructions" (
 	"Step" varchar,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pu_pod" (
 	"id" int(4),
@@ -1439,7 +1439,7 @@ CREATE TABLE "pu_pod" (
 	"receivedqty" numeric,
 	"rejectedqty" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pu_poh" (
 	"id" int(4),
@@ -1455,7 +1455,7 @@ CREATE TABLE "pu_poh" (
 	"taxamt" numeric,
 	"freight" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pu_pv" (
 	"id" int(4),
@@ -1470,7 +1470,7 @@ CREATE TABLE "pu_pv" (
 	"onorderqty" int(4),
 	"unitmeasurecode" bpchar,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pu_sm" (
 	"id" int(4),
@@ -1480,7 +1480,7 @@ CREATE TABLE "pu_sm" (
 	"shiprate" numeric,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "pu_v" (
 	"id" int(4),
@@ -1492,7 +1492,7 @@ CREATE TABLE "pu_v" (
 	"activeflag" Flag NOT NULL,
 	"purchasingwebserviceurl" varchar,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "purchasing_vvendorwithaddresses" (
 	"businessentityid" int(4),
@@ -1504,7 +1504,7 @@ CREATE TABLE "purchasing_vvendorwithaddresses" (
 	"stateprovincename" Name,
 	"postalcode" varchar,
 	"countryregionname" Name
-)
+);
 
 CREATE TABLE "purchasing_vvendorwithcontacts" (
 	"businessentityid" int(4),
@@ -1519,7 +1519,7 @@ CREATE TABLE "purchasing_vvendorwithcontacts" (
 	"phonenumbertype" Name,
 	"emailaddress" varchar,
 	"emailpromotion" int(4)
-)
+);
 
 CREATE TABLE "sa_c" (
 	"id" int(4),
@@ -1529,7 +1529,7 @@ CREATE TABLE "sa_c" (
 	"territoryid" int(4),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_cc" (
 	"id" int(4),
@@ -1539,7 +1539,7 @@ CREATE TABLE "sa_cc" (
 	"expmonth" int(2),
 	"expyear" int(2),
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_cr" (
 	"currencyrateid" int(4),
@@ -1549,27 +1549,27 @@ CREATE TABLE "sa_cr" (
 	"averagerate" numeric,
 	"endofdayrate" numeric,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_crc" (
 	"countryregioncode" varchar,
 	"currencycode" bpchar,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_cu" (
 	"id" bpchar,
 	"currencycode" bpchar,
 	"name" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_pcc" (
 	"id" int(4),
 	"businessentityid" int(4),
 	"creditcardid" int(4),
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_s" (
 	"id" int(4),
@@ -1579,7 +1579,7 @@ CREATE TABLE "sa_s" (
 	"demographics" xml,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_sci" (
 	"id" int(4),
@@ -1589,7 +1589,7 @@ CREATE TABLE "sa_sci" (
 	"productid" int(4),
 	"datecreated" timestamp,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_so" (
 	"id" int(4),
@@ -1604,7 +1604,7 @@ CREATE TABLE "sa_so" (
 	"maxqty" int(4),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_sod" (
 	"id" int(4),
@@ -1618,7 +1618,7 @@ CREATE TABLE "sa_sod" (
 	"unitpricediscount" numeric,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_soh" (
 	"id" int(4),
@@ -1647,13 +1647,13 @@ CREATE TABLE "sa_soh" (
 	"comment" varchar,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_sohsr" (
 	"salesorderid" int(4),
 	"salesreasonid" int(4),
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_sop" (
 	"id" int(4),
@@ -1661,7 +1661,7 @@ CREATE TABLE "sa_sop" (
 	"productid" int(4),
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_sp" (
 	"id" int(4),
@@ -1674,7 +1674,7 @@ CREATE TABLE "sa_sp" (
 	"saleslastyear" numeric,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_spqh" (
 	"id" int(4),
@@ -1683,7 +1683,7 @@ CREATE TABLE "sa_spqh" (
 	"salesquota" numeric,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_sr" (
 	"id" int(4),
@@ -1691,7 +1691,7 @@ CREATE TABLE "sa_sr" (
 	"name" Name,
 	"reasontype" Name,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_st" (
 	"id" int(4),
@@ -1705,7 +1705,7 @@ CREATE TABLE "sa_st" (
 	"costlastyear" numeric,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_sth" (
 	"id" int(4),
@@ -1715,7 +1715,7 @@ CREATE TABLE "sa_sth" (
 	"enddate" timestamp,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sa_tr" (
 	"id" int(4),
@@ -1726,7 +1726,7 @@ CREATE TABLE "sa_tr" (
 	"name" Name,
 	"rowguid" uuid,
 	"modifieddate" timestamp
-)
+);
 
 CREATE TABLE "sales_vindividualcustomer" (
 	"businessentityid" int(4),
@@ -1747,7 +1747,7 @@ CREATE TABLE "sales_vindividualcustomer" (
 	"postalcode" varchar,
 	"countryregionname" Name,
 	"demographics" xml
-)
+);
 
 CREATE TABLE "sales_vpersondemographics" (
 	"businessentityid" int(4),
@@ -1763,7 +1763,7 @@ CREATE TABLE "sales_vpersondemographics" (
 	"occupation" varchar,
 	"homeownerflag" bool,
 	"numbercarsowned" int(4)
-)
+);
 
 CREATE TABLE "sales_vsalesperson" (
 	"businessentityid" int(4),
@@ -1788,7 +1788,7 @@ CREATE TABLE "sales_vsalesperson" (
 	"salesquota" numeric,
 	"salesytd" numeric,
 	"saleslastyear" numeric
-)
+);
 
 CREATE TABLE "sales_vsalespersonsalesbyfiscalyears" (
 	"SalesPersonID" int(4),
@@ -1798,7 +1798,7 @@ CREATE TABLE "sales_vsalespersonsalesbyfiscalyears" (
 	"2012" numeric,
 	"2013" numeric,
 	"2014" numeric
-)
+);
 
 CREATE TABLE "sales_vsalespersonsalesbyfiscalyearsdata" (
 	"salespersonid" int(4),
@@ -1807,7 +1807,7 @@ CREATE TABLE "sales_vsalespersonsalesbyfiscalyearsdata" (
 	"salesterritory" Name,
 	"salestotal" numeric,
 	"fiscalyear" numeric
-)
+);
 
 CREATE TABLE "sales_vstorewithaddresses" (
 	"businessentityid" int(4),
@@ -1819,7 +1819,7 @@ CREATE TABLE "sales_vstorewithaddresses" (
 	"stateprovincename" Name,
 	"postalcode" varchar,
 	"countryregionname" Name
-)
+);
 
 CREATE TABLE "sales_vstorewithcontacts" (
 	"businessentityid" int(4),
@@ -1834,7 +1834,7 @@ CREATE TABLE "sales_vstorewithcontacts" (
 	"phonenumbertype" Name,
 	"emailaddress" varchar,
 	"emailpromotion" int(4)
-)
+);
 
 CREATE TABLE "sales_vstorewithdemographics" (
 	"businessentityid" int(4),
@@ -1849,5 +1849,5 @@ CREATE TABLE "sales_vstorewithdemographics" (
 	"Brands" varchar,
 	"Internet" varchar,
 	"NumberEmployees" int(4)
-)
+);
 
