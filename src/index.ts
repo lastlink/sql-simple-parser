@@ -379,7 +379,7 @@ export class SqlSimpleParser {
           propertyType.indexOf(Foreign_Key) != -1 ||
           propertyType.indexOf(CONSTRAINT_Foreign_Key) != -1
         ) {
-          if (!this.MODE_SQLSERVER) {
+          if (!this.MODE_SQLSERVER || propertyRow.indexOf(AlterTable) == -1) {
             this.ParseMySQLForeignKey(name, currentTableModel);
           } else {
             var completeRow = name;

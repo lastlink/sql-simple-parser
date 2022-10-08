@@ -148,7 +148,7 @@ describe("Example Sql Parsing", () => {
     // console.log(sql);
 
     // run parser
-    const parser = new SqlSimpleParser("postgres");
+    const parser = new SqlSimpleParser("sqlserver");
 
     // get models
     const result = parser.feed(sql).ToModel();
@@ -172,6 +172,7 @@ describe("Example Sql Parsing", () => {
     // );
     expect(1).toBeTruthy();
   });
+
   it("Run Parser postgres simple", async () => {
     // load sql
     var sql = `CREATE TABLE "humanresources_department" (
