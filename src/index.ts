@@ -485,20 +485,6 @@ export class SqlSimpleParser {
     }
     return new RegExp("//(.+)/.*/", "//.+/(.*)/");
   }
-  private GetColumnQuantifiers() {
-    let chars: ColumnQuantifiers = {
-      Start: '"',
-      End: '"',
-    };
-    if (this.dialect == "mysql") {
-      chars.Start = "`";
-      chars.End = "`";
-    } else if (this.dialect == "sqlserver") {
-      chars.Start = "[";
-      chars.End = "]";
-    }
-    return chars;
-  }
 
   private CreatePrimaryKey(
     primaryKeyName: string,
@@ -774,7 +760,43 @@ export class SqlSimpleParser {
   private static isQuoteChar(char: string): boolean {
     return char === '"' || char === "'" || char === "`";
   }
-
+  /**
+   * return text quantifiers for dialect
+   * @returns json
+   */
+  GetColumnQuantifiers() {
+    let chars: ColumnQuantifiers = {
+      Start: '"',
+      End: '"',
+    };
+    if (this.dialect == "mysql") {
+      chars.Start = "`";
+      chars.End = "`";
+    } else if (this.dialect == "sqlserver") {
+      chars.Start = "[";
+      chars.End = "]";
+    }
+    return chars;
+  }
+  ToTableList() {
+    return this.tableList;
+  }
+  ToPrimaryKeyList() {
+    return this.primaryKeyList;
+  }
+  ToForeignKeyList() {
+    return this.foreignKeyList;
+  }
+  ResetModel() {
+    this.tableList = [];
+    this.primaryKeyList = [];
+    this.foreignKeyList = [];
+    return this;
+  }
+  /**
+   * return full sql model
+   * @returns
+   */
   ToModel(): DatabaseModel {
     return {
       TableList: this.tableList,
