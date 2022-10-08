@@ -4,9 +4,9 @@ sql ddl parser to support extensions for drawio
 ## Getting started
 * how to use:
 ```typescript
-import {SqlSimpleParser} from "@funktechno/sqlsimpleparser"
+import { SqlSimpleParser } from "@funktechno/sqlsimpleparser"
 
-var sample = `CREATE TABLE "humanresources_department" (
+var sql = `CREATE TABLE "humanresources_department" (
 	"departmentid" serial NOT NULL,
 	"name" Name NOT NULL,
 	"groupname" Name NOT NULL,
