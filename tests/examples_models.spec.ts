@@ -65,4 +65,25 @@ describe("Example Sql Parsing", () => {
     await runSample();
     expect(1).toBeTruthy();
   });
+  it("Run Parser postgres Ex", async () => {
+    const filePath = "examples/adventureworks_mssql.sql";
+    async function runSample() {
+      // load sql
+      var sql = await fs.readFileSync(filePath, "utf8");
+      console.log(sql);
+
+      // run parser
+      const parser = new SqlSimpleParser('sqlserver')
+
+      // get models
+      const models = parser
+        .feed(sql)
+        .ToModel();
+
+      // write to json file
+      await fs.writeFileSync("output-mssql.json", JSON.stringify(models, null, '\t'));
+    }
+    await runSample();
+    expect(1).toBeTruthy();
+  });
 });

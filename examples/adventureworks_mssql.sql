@@ -3,6 +3,18 @@
 */
 USE [AdventureWorksLT2019]
 GO
+/****** Object:  Table [dbo].[ErrorLog]    Script Date: 10/7/2022 9:47:21 PM ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE Persons (
+    Personid int IDENTITY(1,1) PRIMARY KEY,
+    LastName varchar(255) NOT NULL,
+    FirstName varchar(255),
+    Age int
+);
+GO
 /****** Object:  Table [dbo].[BuildVersion]    Script Date: 10/7/2022 9:47:21 PM ******/
 SET ANSI_NULLS ON
 GO
