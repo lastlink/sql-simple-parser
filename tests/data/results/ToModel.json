@@ -20518,5 +20518,118 @@
                 "PrimaryKeyName": "departmentid"
             }
         ]
+    },
+    "Example Sql Parsing Run Parser mssql simple": {
+        "TableList": [
+            {
+                "Name": "Persons",
+                "Properties": [
+                    {
+                        "Name": "PersonID",
+                        "ColumnProperties": "int NOT NULL",
+                        "TableName": "Persons",
+                        "ForeignKey": [
+                            {
+                                "PrimaryKeyTableName": "Orders",
+                                "PrimaryKeyName": "PersonID",
+                                "ReferencesPropertyName": "PersonID",
+                                "ReferencesTableName": "Persons",
+                                "IsDestination": true
+                            }
+                        ],
+                        "IsForeignKey": false,
+                        "IsPrimaryKey": false
+                    },
+                    {
+                        "Name": "LastName",
+                        "ColumnProperties": "varchar(255)",
+                        "TableName": "Persons",
+                        "ForeignKey": [],
+                        "IsForeignKey": false,
+                        "IsPrimaryKey": false
+                    },
+                    {
+                        "Name": "FirstName",
+                        "ColumnProperties": "varchar(255)",
+                        "TableName": "Persons",
+                        "ForeignKey": [],
+                        "IsForeignKey": false,
+                        "IsPrimaryKey": false
+                    },
+                    {
+                        "Name": "Address",
+                        "ColumnProperties": "varchar(255)",
+                        "TableName": "Persons",
+                        "ForeignKey": [],
+                        "IsForeignKey": false,
+                        "IsPrimaryKey": false
+                    },
+                    {
+                        "Name": "City",
+                        "ColumnProperties": "varchar(255)",
+                        "TableName": "Persons",
+                        "ForeignKey": [],
+                        "IsForeignKey": false,
+                        "IsPrimaryKey": false
+                    }
+                ]
+            },
+            {
+                "Name": "Orders",
+                "Properties": [
+                    {
+                        "Name": "OrderID",
+                        "ColumnProperties": "int NOT NULL PRIMARY KEY",
+                        "TableName": "Orders",
+                        "ForeignKey": [],
+                        "IsForeignKey": false,
+                        "IsPrimaryKey": true
+                    },
+                    {
+                        "Name": "PersonID",
+                        "ColumnProperties": "int NOT NULL",
+                        "TableName": "Orders",
+                        "ForeignKey": [
+                            {
+                                "PrimaryKeyTableName": "Persons",
+                                "PrimaryKeyName": "PersonID",
+                                "ReferencesPropertyName": "PersonID",
+                                "ReferencesTableName": "Orders",
+                                "IsDestination": false
+                            }
+                        ],
+                        "IsForeignKey": true,
+                        "IsPrimaryKey": false
+                    }
+                ]
+            }
+        ],
+        "Dialect": "postgres",
+        "ForeignKeyList": [
+            {
+                "PrimaryKeyTableName": "Orders",
+                "PrimaryKeyName": "PersonID",
+                "ReferencesPropertyName": "PersonID",
+                "ReferencesTableName": "Persons",
+                "IsDestination": true
+            },
+            {
+                "PrimaryKeyTableName": "Persons",
+                "PrimaryKeyName": "PersonID",
+                "ReferencesPropertyName": "PersonID",
+                "ReferencesTableName": "Orders",
+                "IsDestination": false
+            }
+        ],
+        "PrimaryKeyList": [
+            {
+                "PrimaryKeyTableName": "Persons",
+                "PrimaryKeyName": "PersonId"
+            },
+            {
+                "PrimaryKeyTableName": "Orders",
+                "PrimaryKeyName": "OrderID"
+            }
+        ]
     }
 }
