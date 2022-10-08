@@ -20604,7 +20604,7 @@
                 ]
             }
         ],
-        "Dialect": "postgres",
+        "Dialect": "sqlserver",
         "ForeignKeyList": [
             {
                 "PrimaryKeyTableName": "Orders",
