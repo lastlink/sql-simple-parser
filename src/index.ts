@@ -8,6 +8,7 @@ import {
   Primary_Key,
 } from "./contants";
 import {
+  ColumnQuantifiers,
   DatabaseModel,
   ForeignKeyModel,
   PrimaryKeyModel,
@@ -80,12 +81,27 @@ export class SqlSimpleParser {
       // remove database comments, multiline, --, and //
       .replace(/\/\*[\s\S]*?\*\/|\/\/|--.*/g, "")
       .trim();
-    var lines = removedComments
+    var cleanedLines = removedComments
       .split("\n")
       // remove empty lines
       .filter((n) => n)
       // remove multiple spaces
-      .map((n) => n.replace(/\s+/g, " "));
+      .map((n) => n.replace(/\s+/g, " ").trim());
+
+    // combine lines that are in parenthesis
+    var lines: string[] = [];
+    var insertSameLine = false;
+    cleanedLines.forEach((n) => {
+      if (n[0] == "(" || insertSameLine) {
+        if (lines.length > 0) {
+          insertSameLine = true;
+          lines[lines.length - 1] += n;
+          if (n[0] == ")") insertSameLine = false;
+        }
+      } else {
+        lines.push(n);
+      }
+    });
     // dx = 0,
     // tableCell = null,
     // cells = [],
@@ -103,8 +119,14 @@ export class SqlSimpleParser {
 
       var propertyRow = tmp.toLowerCase().trim();
 
-      if(propertyRow == ")")
+      if (propertyRow[0] == ")") {
+        // close table
+        if (currentTableModel) {
+          this.tableList.push(currentTableModel);
+          currentTableModel = null;
+        }
         continue;
+      }
 
       //Parse Table
       if (propertyRow.indexOf(CreateTable) != -1) {
@@ -137,7 +159,8 @@ export class SqlSimpleParser {
         );
 
         //Attempt to get the Key Type
-        var propertyType = name.substring(0, AlterTable.length).toLowerCase();
+        var propertyType = name.toLowerCase();
+        // .substring(0, AlterTable.length).toLowerCase();
 
         //Add special constraints
         if (this.MODE_SQLSERVER) {
@@ -150,15 +173,16 @@ export class SqlSimpleParser {
 
           if (
             propertyType.indexOf(CONSTRAINT) !== -1 &&
-            propertyType.indexOf(Primary_Key) !== -1
+            propertyType.indexOf(Foreign_Key) !== -1
           ) {
             propertyType = CONSTRAINT_Foreign_Key;
           }
         }
 
         //Verify if this is a property that doesn't have a relationship (One minute of silence for the property)
+        // TODO: make primary key check a regex match/ contains w/ () space or not
         var normalProperty =
-          propertyType.indexOf(Primary_Key) == -1 &&
+          !propertyType.match(/PRIMARY KEY\s?\(/gi) &&
           propertyType.indexOf(Foreign_Key) == -1 &&
           propertyType.indexOf(CONSTRAINT_Primary_Key) == -1 &&
           propertyType.indexOf(CONSTRAINT_Foreign_Key) == -1;
@@ -176,22 +200,27 @@ export class SqlSimpleParser {
             if (
               nameSkipCheck.indexOf(" ASC") !== -1 ||
               nameSkipCheck.indexOf(" DESC") !== -1 ||
-              nameSkipCheck.indexOf(" EXEC") !== -1 ||
-              nameSkipCheck.indexOf(" WITH") !== -1 ||
+              nameSkipCheck.indexOf("EXEC ") !== -1 ||
+              nameSkipCheck.indexOf("WITH ") !== -1 ||
               nameSkipCheck.indexOf(" ON") !== -1 ||
-              nameSkipCheck.indexOf(" ALTER") !== -1 ||
+              nameSkipCheck.indexOf("ALTER ") !== -1 ||
+              // comments already removed
               nameSkipCheck.indexOf("/*") !== -1 ||
-              nameSkipCheck.indexOf(" CONSTRAIN") !== -1 ||
-              nameSkipCheck.indexOf(" SET") !== -1 ||
+              nameSkipCheck.indexOf(" CONSTRAINT") !== -1 ||
+              nameSkipCheck.indexOf("SET ") !== -1 ||
               nameSkipCheck.indexOf(" NONCLUSTERED") !== -1 ||
-              nameSkipCheck.indexOf(" GO") !== -1 ||
-              nameSkipCheck.indexOf(" REFERENCES") !== -1
+              // no spaces desired
+              nameSkipCheck.indexOf("GO") !== -1 ||
+              nameSkipCheck.indexOf("REFERENCES ") !== -1
             ) {
               continue;
             }
             //Get delimiter of column name
             //TODO: check for space? or end quantifier
-            var firstSpaceIndex = name.indexOf(" ");
+            var firstSpaceIndex =
+              name[0] == "[" && name.indexOf("]" + " ") !== -1
+                ? name.indexOf("]" + " ")
+                : name.indexOf(" ");
 
             ExtendedProperties = name.substring(firstSpaceIndex + 1).trim();
 
@@ -200,8 +229,13 @@ export class SqlSimpleParser {
 
             name = this.RemoveNameQuantifiers(name);
           } else {
+            const columnQuantifiers = this.GetColumnQuantifiers();
             //Get delimiter of column name
-            var firstSpaceIndex = name.indexOf(" ");
+            var firstSpaceIndex =
+              name[0] == columnQuantifiers.Start &&
+              name.indexOf(columnQuantifiers.End + " ") !== -1
+                ? name.indexOf(columnQuantifiers.End + " ")
+                : name.indexOf(" ");
 
             ExtendedProperties = name.substring(firstSpaceIndex + 1).trim();
 
@@ -222,33 +256,26 @@ export class SqlSimpleParser {
 
           //Add Property to table
           currentTableModel.Properties.push(propertyModel);
-        }
 
-        //Parse Primary Key
-        if (
-          propertyType.indexOf(Primary_Key) != -1 ||
-          propertyType.indexOf(CONSTRAINT_Primary_Key) != -1
-        ) {
-          if (!this.MODE_SQLSERVER) {
-            var primaryKey = name
-              .replace(/PRIMARY KEY\s?\(/gi, "")
-              .replace(")", "");
-
+          if (
+            ExtendedProperties.toLocaleLowerCase().indexOf(Primary_Key) > -1
+          ) {
             //Create Primary Key
             var primaryKeyModel = this.CreatePrimaryKey(
-              primaryKey,
+              name,
               currentTableModel.Name
             );
 
             //Add Primary Key to List
             this.primaryKeyList.push(primaryKeyModel);
-          } else {
-            var start = i + 2;
-            var end = 0;
-            if (
-              propertyRow.indexOf(Primary_Key) !== -1 &&
-              nameSkipCheck.indexOf("CLUSTERED") === -1
-            ) {
+          }
+        } else {
+          //Parse Primary Key
+          if (
+            propertyType.indexOf(Primary_Key) != -1 ||
+            propertyType.indexOf(CONSTRAINT_Primary_Key) != -1
+          ) {
+            if (!this.MODE_SQLSERVER) {
               var primaryKey = name
                 .replace(/PRIMARY KEY\s?\(/gi, "")
                 .replace(")", "");
@@ -262,6 +289,56 @@ export class SqlSimpleParser {
               //Add Primary Key to List
               this.primaryKeyList.push(primaryKeyModel);
             } else {
+              // var start = i + 2;
+              // var end = 0;
+              if (
+                propertyRow.indexOf(Primary_Key) !== -1 &&
+                nameSkipCheck.indexOf("CLUSTERED") === -1
+              ) {
+                var primaryKey = name
+                  .replace(/PRIMARY KEY\s?\(/gi, "")
+                  .replace(")", "");
+
+                //Create Primary Key
+                var primaryKeyModel = this.CreatePrimaryKey(
+                  primaryKey,
+                  currentTableModel.Name
+                );
+
+                //Add Primary Key to List
+                this.primaryKeyList.push(primaryKeyModel);
+              } else {
+                var startIndex = name.toLocaleLowerCase().indexOf("(");
+                var endIndex = name.indexOf(")") + 1;
+                var primaryKey = name
+                  .substring(startIndex, endIndex)
+                  .replace("(", "")
+                  .replace(")", "")
+                  .replace(/ASC/gi, "")
+                  .trim();
+
+                const columnQuantifiers = this.GetColumnQuantifiers();
+                //Get delimiter of column name
+                var firstSpaceIndex =
+                  primaryKey[0] == columnQuantifiers.Start &&
+                  primaryKey.indexOf(columnQuantifiers.End + " ") !== -1
+                    ? primaryKey.indexOf(columnQuantifiers.End + " ")
+                    : primaryKey.indexOf(" ");
+
+                var primaryKeyRow =
+                  firstSpaceIndex == -1
+                    ? primaryKey
+                    : primaryKey.substring(firstSpaceIndex + 1).trim();
+
+                //Create Primary Key
+                var primaryKeyModel = this.CreatePrimaryKey(
+                  primaryKeyRow,
+                  currentTableModel.Name
+                );
+
+                //Add Primary Key to List
+                this.primaryKeyList.push(primaryKeyModel);
+                /*
               while (end === 0) {
                 var primaryKeyRow = lines[start].trim();
 
@@ -285,6 +362,8 @@ export class SqlSimpleParser {
 
                 //Add Primary Key to List
                 this.primaryKeyList.push(primaryKeyModel);
+              }
+              */
               }
             }
           }
@@ -405,6 +484,20 @@ export class SqlSimpleParser {
       return new RegExp(main, options);
     }
     return new RegExp("//(.+)/.*/", "//.+/(.*)/");
+  }
+  private GetColumnQuantifiers() {
+    let chars: ColumnQuantifiers = {
+      Start: '"',
+      End: '"',
+    };
+    if (this.dialect == "mysql") {
+      chars.Start = "`";
+      chars.End = "`";
+    } else if (this.dialect == "sqlserver") {
+      chars.Start = "[";
+      chars.End = "]";
+    }
+    return chars;
   }
 
   private CreatePrimaryKey(
