@@ -1,6 +1,6 @@
 /*
 sql generated using:
- * Package: little-mermaid-2-the-sql
+ * Package: @funktechno/little-mermaid-2-the-sql
  * Version: 0.0.3
  * databaseInfo: mysql
 */
@@ -11,7 +11,7 @@ CREATE TABLE `adventureworks_addresstype` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`AddressTypeID`)
-)
+);
 
 CREATE TABLE `adventureworks_productsubcategory` (
 	`ProductSubcategoryID` INT NOT NULL,
@@ -21,7 +21,7 @@ CREATE TABLE `adventureworks_productsubcategory` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductSubcategoryID`),
 	FOREIGN KEY (`ProductCategoryID`) REFERENCES `adventureworks_productcategory`(`ProductCategoryID`)
-)
+);
 
 CREATE TABLE `adventureworks_awbuildversion` (
 	`SystemInformationID` INT NOT NULL,
@@ -29,7 +29,7 @@ CREATE TABLE `adventureworks_awbuildversion` (
 	`VersionDate` DATETIME NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SystemInformationID`)
-)
+);
 
 CREATE TABLE `adventureworks_contact` (
 	`ContactID` INT NOT NULL,
@@ -48,28 +48,28 @@ CREATE TABLE `adventureworks_contact` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ContactID`)
-)
+);
 
 CREATE TABLE `adventureworks_contacttype` (
 	`ContactTypeID` INT NOT NULL,
 	`Name` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ContactTypeID`)
-)
+);
 
 CREATE TABLE `adventureworks_countryregion` (
 	`CountryRegionCode` VARCHAR NOT NULL,
 	`Name` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CountryRegionCode`)
-)
+);
 
 CREATE TABLE `adventureworks_countryregioncurrency` (
 	`CountryRegionCode` VARCHAR NOT NULL,
 	`CurrencyCode` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CountryRegionCode`,`CurrencyCode`)
-)
+);
 
 CREATE TABLE `adventureworks_creditcard` (
 	`CreditCardID` INT NOT NULL,
@@ -79,21 +79,21 @@ CREATE TABLE `adventureworks_creditcard` (
 	`ExpYear` SMALLINT NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CreditCardID`)
-)
+);
 
 CREATE TABLE `adventureworks_culture` (
 	`CultureID` VARCHAR NOT NULL,
 	`Name` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CultureID`)
-)
+);
 
 CREATE TABLE `adventureworks_currency` (
 	`CurrencyCode` VARCHAR NOT NULL,
 	`Name` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CurrencyCode`)
-)
+);
 
 CREATE TABLE `adventureworks_currencyrate` (
 	`CurrencyRateID` INT NOT NULL,
@@ -104,7 +104,7 @@ CREATE TABLE `adventureworks_currencyrate` (
 	`EndOfDayRate` DOUBLE NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CurrencyRateID`)
-)
+);
 
 CREATE TABLE `adventureworks_databaselog` (
 	`DatabaseLogID` INT NOT NULL,
@@ -116,7 +116,7 @@ CREATE TABLE `adventureworks_databaselog` (
 	`TSQL` MEDIUMTEXT NOT NULL,
 	`XmlEvent` MEDIUMTEXT NOT NULL,
 	PRIMARY KEY(`DatabaseLogID`)
-)
+);
 
 CREATE TABLE `adventureworks_department` (
 	`DepartmentID` SMALLINT NOT NULL,
@@ -124,7 +124,7 @@ CREATE TABLE `adventureworks_department` (
 	`GroupName` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`DepartmentID`)
-)
+);
 
 CREATE TABLE `adventureworks_document` (
 	`DocumentID` INT NOT NULL,
@@ -138,7 +138,7 @@ CREATE TABLE `adventureworks_document` (
 	`Document` BLOB,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`DocumentID`)
-)
+);
 
 CREATE TABLE `adventureworks_errorlog` (
 	`ErrorLogID` INT NOT NULL,
@@ -151,14 +151,14 @@ CREATE TABLE `adventureworks_errorlog` (
 	`ErrorLine` INT,
 	`ErrorMessage` MEDIUMTEXT NOT NULL,
 	PRIMARY KEY(`ErrorLogID`)
-)
+);
 
 CREATE TABLE `adventureworks_illustration` (
 	`IllustrationID` INT NOT NULL,
 	`Diagram` TEXT,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`IllustrationID`)
-)
+);
 
 CREATE TABLE `adventureworks_location` (
 	`LocationID` SMALLINT NOT NULL,
@@ -167,7 +167,7 @@ CREATE TABLE `adventureworks_location` (
 	`Availability` DECIMAL NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`LocationID`)
-)
+);
 
 CREATE TABLE `adventureworks_productcategory` (
 	`ProductCategoryID` INT NOT NULL,
@@ -175,7 +175,7 @@ CREATE TABLE `adventureworks_productcategory` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductCategoryID`)
-)
+);
 
 CREATE TABLE `adventureworks_productdescription` (
 	`ProductDescriptionID` INT NOT NULL,
@@ -183,7 +183,7 @@ CREATE TABLE `adventureworks_productdescription` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductDescriptionID`)
-)
+);
 
 CREATE TABLE `adventureworks_productmodel` (
 	`ProductModelID` INT NOT NULL,
@@ -193,7 +193,7 @@ CREATE TABLE `adventureworks_productmodel` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductModelID`)
-)
+);
 
 CREATE TABLE `adventureworks_productphoto` (
 	`ProductPhotoID` INT NOT NULL,
@@ -203,7 +203,7 @@ CREATE TABLE `adventureworks_productphoto` (
 	`LargePhotoFileName` VARCHAR,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductPhotoID`)
-)
+);
 
 CREATE TABLE `adventureworks_salesreason` (
 	`SalesReasonID` INT NOT NULL,
@@ -211,7 +211,7 @@ CREATE TABLE `adventureworks_salesreason` (
 	`ReasonType` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesReasonID`)
-)
+);
 
 CREATE TABLE `adventureworks_salestaxrate` (
 	`SalesTaxRateID` INT NOT NULL,
@@ -222,14 +222,14 @@ CREATE TABLE `adventureworks_salestaxrate` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesTaxRateID`)
-)
+);
 
 CREATE TABLE `adventureworks_scrapreason` (
 	`ScrapReasonID` SMALLINT NOT NULL,
 	`Name` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ScrapReasonID`)
-)
+);
 
 CREATE TABLE `adventureworks_shift` (
 	`ShiftID` TINYINT NOT NULL,
@@ -238,7 +238,7 @@ CREATE TABLE `adventureworks_shift` (
 	`EndTime` DATETIME NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ShiftID`)
-)
+);
 
 CREATE TABLE `adventureworks_shipmethod` (
 	`ShipMethodID` INT NOT NULL,
@@ -248,7 +248,7 @@ CREATE TABLE `adventureworks_shipmethod` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ShipMethodID`)
-)
+);
 
 CREATE TABLE `adventureworks_specialoffer` (
 	`SpecialOfferID` INT NOT NULL,
@@ -263,14 +263,14 @@ CREATE TABLE `adventureworks_specialoffer` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SpecialOfferID`)
-)
+);
 
 CREATE TABLE `adventureworks_unitmeasure` (
 	`UnitMeasureCode` VARCHAR NOT NULL,
 	`Name` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`UnitMeasureCode`)
-)
+);
 
 CREATE TABLE `adventureworks_vendor` (
 	`VendorID` INT NOT NULL,
@@ -282,7 +282,7 @@ CREATE TABLE `adventureworks_vendor` (
 	`PurchasingWebServiceURL` MEDIUMTEXT,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`VendorID`)
-)
+);
 
 CREATE TABLE `adventureworks_contactcreditcard` (
 	`ContactID` INT NOT NULL,
@@ -291,7 +291,7 @@ CREATE TABLE `adventureworks_contactcreditcard` (
 	PRIMARY KEY(`ContactID`,`CreditCardID`),
 	FOREIGN KEY (`ContactID`) REFERENCES `adventureworks_contact`(`ContactID`),
 	FOREIGN KEY (`CreditCardID`) REFERENCES `adventureworks_creditcard`(`CreditCardID`)
-)
+);
 
 CREATE TABLE `adventureworks_employee` (
 	`EmployeeID` INT NOT NULL,
@@ -312,7 +312,7 @@ CREATE TABLE `adventureworks_employee` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`EmployeeID`),
 	FOREIGN KEY (`ContactID`) REFERENCES `adventureworks_contact`(`ContactID`)
-)
+);
 
 CREATE TABLE `adventureworks_productmodelillustration` (
 	`ProductModelID` INT NOT NULL,
@@ -321,7 +321,7 @@ CREATE TABLE `adventureworks_productmodelillustration` (
 	PRIMARY KEY(`ProductModelID`,`IllustrationID`),
 	FOREIGN KEY (`IllustrationID`) REFERENCES `adventureworks_illustration`(`IllustrationID`),
 	FOREIGN KEY (`ProductModelID`) REFERENCES `adventureworks_productmodel`(`ProductModelID`)
-)
+);
 
 CREATE TABLE `adventureworks_productmodelproductdescriptionculture` (
 	`ProductModelID` INT NOT NULL,
@@ -332,7 +332,7 @@ CREATE TABLE `adventureworks_productmodelproductdescriptionculture` (
 	FOREIGN KEY (`CultureID`) REFERENCES `adventureworks_culture`(`CultureID`),
 	FOREIGN KEY (`ProductDescriptionID`) REFERENCES `adventureworks_productdescription`(`ProductDescriptionID`),
 	FOREIGN KEY (`ProductModelID`) REFERENCES `adventureworks_productmodel`(`ProductModelID`)
-)
+);
 
 CREATE TABLE `adventureworks_salesterritory` (
 	`TerritoryID` INT NOT NULL,
@@ -347,7 +347,7 @@ CREATE TABLE `adventureworks_salesterritory` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`TerritoryID`),
 	FOREIGN KEY (`CountryRegionCode`) REFERENCES `adventureworks_countryregion`(`CountryRegionCode`)
-)
+);
 
 CREATE TABLE `adventureworks_vendorcontact` (
 	`VendorID` INT NOT NULL,
@@ -356,7 +356,7 @@ CREATE TABLE `adventureworks_vendorcontact` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`VendorID`,`ContactID`),
 	FOREIGN KEY (`ContactID`) REFERENCES `adventureworks_contact`(`ContactID`)
-)
+);
 
 CREATE TABLE `adventureworks_customer` (
 	`CustomerID` INT NOT NULL,
@@ -367,7 +367,7 @@ CREATE TABLE `adventureworks_customer` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CustomerID`),
 	FOREIGN KEY (`TerritoryID`) REFERENCES `adventureworks_salesterritory`(`TerritoryID`)
-)
+);
 
 CREATE TABLE `adventureworks_employeedepartmenthistory` (
 	`EmployeeID` INT NOT NULL,
@@ -380,7 +380,7 @@ CREATE TABLE `adventureworks_employeedepartmenthistory` (
 	FOREIGN KEY (`DepartmentID`) REFERENCES `adventureworks_department`(`DepartmentID`),
 	FOREIGN KEY (`EmployeeID`) REFERENCES `adventureworks_employee`(`EmployeeID`),
 	FOREIGN KEY (`ShiftID`) REFERENCES `adventureworks_shift`(`ShiftID`)
-)
+);
 
 CREATE TABLE `adventureworks_employeepayhistory` (
 	`EmployeeID` INT NOT NULL,
@@ -390,7 +390,7 @@ CREATE TABLE `adventureworks_employeepayhistory` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`EmployeeID`,`RateChangeDate`),
 	FOREIGN KEY (`EmployeeID`) REFERENCES `adventureworks_employee`(`EmployeeID`)
-)
+);
 
 CREATE TABLE `adventureworks_jobcandidate` (
 	`JobCandidateID` INT NOT NULL,
@@ -399,7 +399,7 @@ CREATE TABLE `adventureworks_jobcandidate` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`JobCandidateID`),
 	FOREIGN KEY (`EmployeeID`) REFERENCES `adventureworks_employee`(`EmployeeID`)
-)
+);
 
 CREATE TABLE `adventureworks_product` (
 	`ProductID` INT NOT NULL,
@@ -429,7 +429,7 @@ CREATE TABLE `adventureworks_product` (
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductID`),
 	FOREIGN KEY (`ProductModelID`) REFERENCES `adventureworks_productmodel`(`ProductModelID`)
-)
+);
 
 CREATE TABLE `adventureworks_purchaseorderheader` (
 	`PurchaseOrderID` INT NOT NULL,
@@ -446,7 +446,7 @@ CREATE TABLE `adventureworks_purchaseorderheader` (
 	`TotalDue` DOUBLE,
 	`ModifiedDate` DATETIME,
 	PRIMARY KEY(`PurchaseOrderID`)
-)
+);
 
 CREATE TABLE `adventureworks_salesperson` (
 	`SalesPersonID` INT NOT NULL,
@@ -459,7 +459,7 @@ CREATE TABLE `adventureworks_salesperson` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesPersonID`)
-)
+);
 
 CREATE TABLE `adventureworks_salesterritoryhistory` (
 	`SalesPersonID` INT NOT NULL,
@@ -469,7 +469,7 @@ CREATE TABLE `adventureworks_salesterritoryhistory` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesPersonID`,`TerritoryID`,`StartDate`)
-)
+);
 
 CREATE TABLE `adventureworks_stateprovince` (
 	`StateProvinceID` INT NOT NULL,
@@ -481,7 +481,7 @@ CREATE TABLE `adventureworks_stateprovince` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`StateProvinceID`)
-)
+);
 
 CREATE TABLE `adventureworks_address` (
 	`AddressID` INT NOT NULL,
@@ -493,7 +493,7 @@ CREATE TABLE `adventureworks_address` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`AddressID`)
-)
+);
 
 CREATE TABLE `adventureworks_billofmaterials` (
 	`BillOfMaterialsID` INT NOT NULL,
@@ -506,7 +506,7 @@ CREATE TABLE `adventureworks_billofmaterials` (
 	`PerAssemblyQty` DECIMAL NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`BillOfMaterialsID`)
-)
+);
 
 CREATE TABLE `adventureworks_individual` (
 	`CustomerID` INT NOT NULL,
@@ -514,7 +514,7 @@ CREATE TABLE `adventureworks_individual` (
 	`Demographics` TEXT,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CustomerID`)
-)
+);
 
 CREATE TABLE `adventureworks_productcosthistory` (
 	`ProductID` INT NOT NULL,
@@ -523,14 +523,14 @@ CREATE TABLE `adventureworks_productcosthistory` (
 	`StandardCost` DOUBLE NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductID`,`StartDate`)
-)
+);
 
 CREATE TABLE `adventureworks_productdocument` (
 	`ProductID` INT NOT NULL,
 	`DocumentID` INT NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductID`,`DocumentID`)
-)
+);
 
 CREATE TABLE `adventureworks_productinventory` (
 	`ProductID` INT NOT NULL,
@@ -541,7 +541,7 @@ CREATE TABLE `adventureworks_productinventory` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductID`,`LocationID`)
-)
+);
 
 CREATE TABLE `adventureworks_productlistpricehistory` (
 	`ProductID` INT NOT NULL,
@@ -550,7 +550,7 @@ CREATE TABLE `adventureworks_productlistpricehistory` (
 	`ListPrice` DOUBLE NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductID`,`StartDate`)
-)
+);
 
 CREATE TABLE `adventureworks_productproductphoto` (
 	`ProductID` INT NOT NULL,
@@ -558,7 +558,7 @@ CREATE TABLE `adventureworks_productproductphoto` (
 	`Primary` BIT NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductID`,`ProductPhotoID`)
-)
+);
 
 CREATE TABLE `adventureworks_productreview` (
 	`ProductReviewID` INT NOT NULL,
@@ -570,7 +570,7 @@ CREATE TABLE `adventureworks_productreview` (
 	`Comments` MEDIUMTEXT,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductReviewID`)
-)
+);
 
 CREATE TABLE `adventureworks_productvendor` (
 	`ProductID` INT NOT NULL,
@@ -585,7 +585,7 @@ CREATE TABLE `adventureworks_productvendor` (
 	`UnitMeasureCode` VARCHAR NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ProductID`,`VendorID`)
-)
+);
 
 CREATE TABLE `adventureworks_purchaseorderdetail` (
 	`PurchaseOrderID` INT NOT NULL,
@@ -600,7 +600,7 @@ CREATE TABLE `adventureworks_purchaseorderdetail` (
 	`StockedQty` DECIMAL NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`PurchaseOrderID`,`PurchaseOrderDetailID`)
-)
+);
 
 CREATE TABLE `adventureworks_salespersonquotahistory` (
 	`SalesPersonID` INT NOT NULL,
@@ -609,7 +609,7 @@ CREATE TABLE `adventureworks_salespersonquotahistory` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesPersonID`,`QuotaDate`)
-)
+);
 
 CREATE TABLE `adventureworks_shoppingcartitem` (
 	`ShoppingCartItemID` INT NOT NULL,
@@ -619,7 +619,7 @@ CREATE TABLE `adventureworks_shoppingcartitem` (
 	`DateCreated` TIMESTAMP NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`ShoppingCartItemID`)
-)
+);
 
 CREATE TABLE `adventureworks_specialofferproduct` (
 	`SpecialOfferID` INT NOT NULL,
@@ -627,7 +627,7 @@ CREATE TABLE `adventureworks_specialofferproduct` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SpecialOfferID`,`ProductID`)
-)
+);
 
 CREATE TABLE `adventureworks_store` (
 	`CustomerID` INT NOT NULL,
@@ -637,7 +637,7 @@ CREATE TABLE `adventureworks_store` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CustomerID`)
-)
+);
 
 CREATE TABLE `adventureworks_storecontact` (
 	`CustomerID` INT NOT NULL,
@@ -646,7 +646,7 @@ CREATE TABLE `adventureworks_storecontact` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CustomerID`,`ContactID`)
-)
+);
 
 CREATE TABLE `adventureworks_transactionhistory` (
 	`TransactionID` INT NOT NULL,
@@ -659,7 +659,7 @@ CREATE TABLE `adventureworks_transactionhistory` (
 	`ActualCost` DOUBLE NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`TransactionID`)
-)
+);
 
 CREATE TABLE `adventureworks_transactionhistoryarchive` (
 	`TransactionID` INT NOT NULL,
@@ -672,7 +672,7 @@ CREATE TABLE `adventureworks_transactionhistoryarchive` (
 	`ActualCost` DOUBLE NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`TransactionID`)
-)
+);
 
 CREATE TABLE `adventureworks_workorder` (
 	`WorkOrderID` INT NOT NULL,
@@ -686,7 +686,7 @@ CREATE TABLE `adventureworks_workorder` (
 	`ScrapReasonID` SMALLINT,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`WorkOrderID`)
-)
+);
 
 CREATE TABLE `adventureworks_customeraddress` (
 	`CustomerID` INT NOT NULL,
@@ -695,7 +695,7 @@ CREATE TABLE `adventureworks_customeraddress` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`CustomerID`,`AddressID`)
-)
+);
 
 CREATE TABLE `adventureworks_employeeaddress` (
 	`EmployeeID` INT NOT NULL,
@@ -703,7 +703,7 @@ CREATE TABLE `adventureworks_employeeaddress` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`EmployeeID`,`AddressID`)
-)
+);
 
 CREATE TABLE `adventureworks_salesorderheader` (
 	`SalesOrderID` INT NOT NULL,
@@ -734,7 +734,7 @@ CREATE TABLE `adventureworks_salesorderheader` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesOrderID`)
-)
+);
 
 CREATE TABLE `adventureworks_vendoraddress` (
 	`VendorID` INT NOT NULL,
@@ -742,7 +742,7 @@ CREATE TABLE `adventureworks_vendoraddress` (
 	`AddressTypeID` INT NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`VendorID`,`AddressID`)
-)
+);
 
 CREATE TABLE `adventureworks_workorderrouting` (
 	`WorkOrderID` INT NOT NULL,
@@ -758,7 +758,7 @@ CREATE TABLE `adventureworks_workorderrouting` (
 	`ActualCost` DOUBLE,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`WorkOrderID`,`ProductID`,`OperationSequence`)
-)
+);
 
 CREATE TABLE `adventureworks_salesorderdetail` (
 	`SalesOrderID` INT NOT NULL,
@@ -773,12 +773,12 @@ CREATE TABLE `adventureworks_salesorderdetail` (
 	`rowguid` VARBINARY NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesOrderID`,`SalesOrderDetailID`)
-)
+);
 
 CREATE TABLE `adventureworks_salesorderheadersalesreason` (
 	`SalesOrderID` INT NOT NULL,
 	`SalesReasonID` INT NOT NULL,
 	`ModifiedDate` TIMESTAMP NOT NULL,
 	PRIMARY KEY(`SalesOrderID`,`SalesReasonID`)
-)
+);
 

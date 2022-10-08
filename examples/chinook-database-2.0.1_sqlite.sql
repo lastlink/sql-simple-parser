@@ -1,6 +1,6 @@
 /*
 sql generated using:
- * Package: little-mermaid-2-the-sql
+ * Package: @funktechno/little-mermaid-2-the-sql
  * Version: 0.0.3
  * databaseInfo: sqlite
 */
@@ -9,7 +9,7 @@ CREATE TABLE "Artist" (
 	"ArtistId" INTEGER NOT NULL,
 	"Name" NVARCHAR(120),
 	PRIMARY KEY("ArtistId")
-)
+);
 
 CREATE TABLE "Employee" (
 	"EmployeeId" INTEGER NOT NULL,
@@ -28,25 +28,25 @@ CREATE TABLE "Employee" (
 	"Fax" NVARCHAR(24),
 	"Email" NVARCHAR(60),
 	PRIMARY KEY("EmployeeId")
-)
+);
 
 CREATE TABLE "Genre" (
 	"GenreId" INTEGER NOT NULL,
 	"Name" NVARCHAR(120),
 	PRIMARY KEY("GenreId")
-)
+);
 
 CREATE TABLE "MediaType" (
 	"MediaTypeId" INTEGER NOT NULL,
 	"Name" NVARCHAR(120),
 	PRIMARY KEY("MediaTypeId")
-)
+);
 
 CREATE TABLE "Playlist" (
 	"PlaylistId" INTEGER NOT NULL,
 	"Name" NVARCHAR(120),
 	PRIMARY KEY("PlaylistId")
-)
+);
 
 CREATE TABLE "Album" (
 	"AlbumId" INTEGER NOT NULL,
@@ -54,7 +54,7 @@ CREATE TABLE "Album" (
 	"ArtistId" INTEGER NOT NULL,
 	PRIMARY KEY("AlbumId"),
 	FOREIGN KEY ("ArtistId") REFERENCES "Artist"("ArtistId")
-)
+);
 
 CREATE TABLE "Customer" (
 	"CustomerId" INTEGER NOT NULL,
@@ -72,7 +72,7 @@ CREATE TABLE "Customer" (
 	"SupportRepId" INTEGER,
 	PRIMARY KEY("CustomerId"),
 	FOREIGN KEY ("SupportRepId") REFERENCES "Employee"("EmployeeId")
-)
+);
 
 CREATE TABLE "test_table" (
 	"id" INTEGER NOT NULL,
@@ -80,7 +80,7 @@ CREATE TABLE "test_table" (
 	"Artist Id" INTEGER,
 	PRIMARY KEY("id"),
 	FOREIGN KEY ("Artist Id") REFERENCES "Artist"("ArtistId")
-)
+);
 
 CREATE TABLE "Invoice" (
 	"InvoiceId" INTEGER NOT NULL,
@@ -94,7 +94,7 @@ CREATE TABLE "Invoice" (
 	"Total" NUMERIC(10,2) NOT NULL,
 	PRIMARY KEY("InvoiceId"),
 	FOREIGN KEY ("CustomerId") REFERENCES "Customer"("CustomerId")
-)
+);
 
 CREATE TABLE "Track" (
 	"TrackId" INTEGER NOT NULL,
@@ -110,7 +110,7 @@ CREATE TABLE "Track" (
 	FOREIGN KEY ("AlbumId") REFERENCES "Album"("AlbumId"),
 	FOREIGN KEY ("GenreId") REFERENCES "Genre"("GenreId"),
 	FOREIGN KEY ("MediaTypeId") REFERENCES "MediaType"("MediaTypeId")
-)
+);
 
 CREATE TABLE "InvoiceLine" (
 	"InvoiceLineId" INTEGER NOT NULL,
@@ -121,7 +121,7 @@ CREATE TABLE "InvoiceLine" (
 	PRIMARY KEY("InvoiceLineId"),
 	FOREIGN KEY ("InvoiceId") REFERENCES "Invoice"("InvoiceId"),
 	FOREIGN KEY ("TrackId") REFERENCES "Track"("TrackId")
-)
+);
 
 CREATE TABLE "PlaylistTrack" (
 	"PlaylistId" INTEGER NOT NULL,
@@ -129,5 +129,5 @@ CREATE TABLE "PlaylistTrack" (
 	PRIMARY KEY("PlaylistId","TrackId"),
 	FOREIGN KEY ("PlaylistId") REFERENCES "Playlist"("PlaylistId"),
 	FOREIGN KEY ("TrackId") REFERENCES "Track"("TrackId")
-)
+);
 
