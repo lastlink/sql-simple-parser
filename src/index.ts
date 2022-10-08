@@ -92,7 +92,13 @@ export class SqlSimpleParser {
     var lines: string[] = [];
     var insertSameLine = false;
     cleanedLines.forEach((n) => {
-      if (n[0] == "(" || insertSameLine) {
+      if (
+        (lines.length > 0 &&
+          n[0] == "(" &&
+          lines[lines.length - 1].toLocaleLowerCase().indexOf(CreateTable) ==
+            -1) ||
+        insertSameLine
+      ) {
         if (lines.length > 0) {
           insertSameLine = true;
           lines[lines.length - 1] += n;
