@@ -325,6 +325,65 @@ export class SqlSimpleParser {
         }
       }
     }
+    // parse fk and primary keys
+    if (this.primaryKeyList.length > 0) {
+      this.primaryKeyList.forEach((pk) => {
+        // find table index
+        var pkTableIndex = this.tableList.findIndex(
+          (t) => t.Name == pk.PrimaryKeyTableName
+        );
+
+        // find property index
+        if (pkTableIndex > -1) {
+          var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
+            (p) => p.Name == pk.PrimaryKeyName
+          );
+          if (propertyIndex > -1) {
+            this.tableList[pkTableIndex].Properties[
+              propertyIndex
+            ].IsPrimaryKey = true;
+          }
+        }
+      });
+    }
+    if (this.foreignKeyList.length > 0) {
+      this.foreignKeyList.forEach((fk) => {
+        // find table index
+        var pkTableIndex = this.tableList.findIndex(
+          (t) => t.Name == fk.ReferencesTableName
+        );
+
+        // var fkTableIndex = this.tableList.findIndex(
+        //   (t) => t.Name == fk.PrimaryKeyTableName
+        // );
+
+        // find property index
+        if (pkTableIndex > -1) {
+          var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
+            (p) => p.Name == fk.PrimaryKeyName
+          );
+          if (propertyIndex > -1) {
+            this.tableList[pkTableIndex].Properties[
+              propertyIndex
+            ].ForeignKey.push(fk);
+            if (!fk.IsDestination) {
+              this.tableList[pkTableIndex].Properties[
+                propertyIndex
+              ].IsForeignKey = true;
+            }
+          }
+        }
+
+        // if (fkTableIndex > -1) {
+        //   var propertyIndex = this.tableList[fkTableIndex].Properties.findIndex(
+        //     (p) => p.Name == fk.PrimaryKeyName
+        //   );
+        //   if (propertyIndex > -1) {
+        //     this.tableList[fkTableIndex].Properties[propertyIndex].ForeignKey.push(fk)
+        //   }
+        // }
+      });
+    }
 
     return this;
   }
@@ -351,7 +410,7 @@ export class SqlSimpleParser {
   ) {
     var primaryKey: PrimaryKeyModel = {
       PrimaryKeyTableName: primaryKeyTableName,
-      PrimaryKeyName: primaryKeyName,
+      PrimaryKeyName: this.RemoveNameQuantifiers(primaryKeyName),
     };
 
     return primaryKey;
@@ -369,7 +428,7 @@ export class SqlSimpleParser {
       Name: name,
       ColumnProperties: columnProps,
       TableName: tableName,
-      ForeignKey: isForeignKey ? foreignKey : [],
+      ForeignKey: foreignKey || [],
       IsForeignKey: isForeignKey,
       IsPrimaryKey: isPrimaryKey,
     };
@@ -535,10 +594,12 @@ export class SqlSimpleParser {
     isDestination: boolean
   ) {
     var foreignKey: ForeignKeyModel = {
-      PrimaryKeyTableName: primaryKeyTableName,
-      PrimaryKeyName: primaryKeyName,
-      ReferencesPropertyName: referencesPropertyName,
-      ReferencesTableName: referencesTableName,
+      PrimaryKeyTableName: this.RemoveNameQuantifiers(primaryKeyTableName),
+      PrimaryKeyName: this.RemoveNameQuantifiers(primaryKeyName),
+      ReferencesPropertyName: this.RemoveNameQuantifiers(
+        referencesPropertyName
+      ),
+      ReferencesTableName: this.RemoveNameQuantifiers(referencesTableName),
       IsDestination:
         isDestination !== undefined && isDestination !== null
           ? isDestination

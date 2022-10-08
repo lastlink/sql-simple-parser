@@ -15,7 +15,7 @@ export interface PropertyModel {
   Value?: string;
   ColumnProperties: string;
   TableName: string;
-  ForeignKey: ForeignKeyModel[] | null;
+  ForeignKey: ForeignKeyModel[];
   IsPrimaryKey: boolean;
   IsForeignKey: boolean;
 }
