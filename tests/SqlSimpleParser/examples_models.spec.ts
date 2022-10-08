@@ -127,6 +127,51 @@ describe("Example Sql Parsing", () => {
     expect(1).toBeTruthy();
   });
 
+  it("Run Parser mssql simple", async () => {
+    // load sql
+    var sql = `CREATE TABLE Persons
+    (
+        PersonID int NOT NULL,
+        LastName varchar(255),
+        FirstName varchar(255),
+        Address varchar(255),
+        City varchar(255),
+        Primary Key(PersonId)
+    );
+    
+    CREATE TABLE Orders
+    (
+        OrderID int NOT NULL PRIMARY KEY,
+        PersonID int NOT NULL,
+        FOREIGN KEY ([PersonID]) REFERENCES [Persons]([PersonID])
+    );`;
+    // console.log(sql);
+
+    // run parser
+    const parser = new SqlSimpleParser("postgres");
+
+    // get models
+    const result = parser.feed(sql).ToModel();
+
+    // write to json file
+    const dataKey = expect.getState().currentTestName || "unknown";
+
+    const expectedResult = await getExpected(dataSource, dataKey);
+
+    if (result != expectedResult) {
+      await updateExpected(dataSource, dataKey, result);
+    }
+
+    // console.log(result);
+    expect(result).toStrictEqual(expectedResult);
+
+    // write to json file
+    // await fs.writeFileSync(
+    //   "output-pg_simple.json",
+    //   JSON.stringify(models, null, "\t")
+    // );
+    expect(1).toBeTruthy();
+  });
   it("Run Parser postgres simple", async () => {
     // load sql
     var sql = `CREATE TABLE "humanresources_department" (
