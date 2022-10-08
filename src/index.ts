@@ -103,6 +103,9 @@ export class SqlSimpleParser {
 
       var propertyRow = tmp.toLowerCase().trim();
 
+      if(propertyRow == ")")
+        continue;
+
       //Parse Table
       if (propertyRow.indexOf(CreateTable) != -1) {
         //Parse row
