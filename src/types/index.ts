@@ -32,3 +32,8 @@ export interface PrimaryKeyModel {
   PrimaryKeyName: string;
   PrimaryKeyTableName: string;
 }
+
+export interface ColumnQuantifiers {
+  Start: string;
+  End: string;
+}

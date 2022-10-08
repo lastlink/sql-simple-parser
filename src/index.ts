@@ -8,6 +8,7 @@ import {
   Primary_Key,
 } from "./contants";
 import {
+  ColumnQuantifiers,
   DatabaseModel,
   ForeignKeyModel,
   PrimaryKeyModel,
@@ -80,12 +81,27 @@ export class SqlSimpleParser {
       // remove database comments, multiline, --, and //
       .replace(/\/\*[\s\S]*?\*\/|\/\/|--.*/g, "")
       .trim();
-    var lines = removedComments
+    var cleanedLines = removedComments
       .split("\n")
       // remove empty lines
       .filter((n) => n)
       // remove multiple spaces
       .map((n) => n.replace(/\s+/g, " ").trim());
+
+    // combine lines that are in parenthesis
+    var lines: string[] = [];
+    var insertSameLine = false;
+    cleanedLines.forEach((n) => {
+      if (n[0] == "(" || insertSameLine) {
+        if (lines.length > 0) {
+          insertSameLine = true;
+          lines[lines.length - 1] += n;
+          if (n[0] == ")") insertSameLine = false;
+        }
+      } else {
+        lines.push(n);
+      }
+    });
     // dx = 0,
     // tableCell = null,
     // cells = [],
@@ -103,14 +119,13 @@ export class SqlSimpleParser {
 
       var propertyRow = tmp.toLowerCase().trim();
 
-      if(propertyRow[0] == ")"){
+      if (propertyRow[0] == ")") {
         // close table
-        if(currentTableModel){
+        if (currentTableModel) {
           this.tableList.push(currentTableModel);
           currentTableModel = null;
         }
         continue;
-
       }
 
       //Parse Table
@@ -201,7 +216,10 @@ export class SqlSimpleParser {
             }
             //Get delimiter of column name
             //TODO: check for space? or end quantifier
-            var firstSpaceIndex = name.indexOf(" ");
+            var firstSpaceIndex =
+              name[0] == "[" && name.indexOf("]" + " ") !== -1
+                ? name.indexOf("]" + " ") 
+                : name.indexOf(" ");
 
             ExtendedProperties = name.substring(firstSpaceIndex + 1).trim();
 
@@ -210,8 +228,12 @@ export class SqlSimpleParser {
 
             name = this.RemoveNameQuantifiers(name);
           } else {
+            const columnQuantifiers = this.GetColumnQuantifiers()
             //Get delimiter of column name
-            var firstSpaceIndex = name.indexOf(" ");
+            var firstSpaceIndex =
+              name[0] == columnQuantifiers.Start && name.indexOf(columnQuantifiers.End + " ") !== -1
+                ? name.indexOf(columnQuantifiers.End + " ")
+                : name.indexOf(" ");
 
             ExtendedProperties = name.substring(firstSpaceIndex + 1).trim();
 
@@ -415,6 +437,20 @@ export class SqlSimpleParser {
       return new RegExp(main, options);
     }
     return new RegExp("//(.+)/.*/", "//.+/(.*)/");
+  }
+  private GetColumnQuantifiers(){
+    let chars:ColumnQuantifiers={
+      Start: '"',
+      End: '"'
+    }
+    if (this.dialect == "mysql") {
+      chars.Start = "`";
+      chars.End = "`";
+    } else if (this.dialect == "sqlserver") {
+      chars.Start = "[";
+      chars.End = "]";
+    }
+    return chars;
   }
 
   private CreatePrimaryKey(
