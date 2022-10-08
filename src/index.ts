@@ -85,7 +85,7 @@ export class SqlSimpleParser {
       // remove empty lines
       .filter((n) => n)
       // remove multiple spaces
-      .map((n) => n.replace(/\s+/g, " "));
+      .map((n) => n.replace(/\s+/g, " ").trim());
     // dx = 0,
     // tableCell = null,
     // cells = [],
@@ -103,8 +103,15 @@ export class SqlSimpleParser {
 
       var propertyRow = tmp.toLowerCase().trim();
 
-      if(propertyRow == ")")
+      if(propertyRow[0] == ")"){
+        // close table
+        if(currentTableModel){
+          this.tableList.push(currentTableModel);
+          currentTableModel = null;
+        }
         continue;
+
+      }
 
       //Parse Table
       if (propertyRow.indexOf(CreateTable) != -1) {
@@ -137,7 +144,8 @@ export class SqlSimpleParser {
         );
 
         //Attempt to get the Key Type
-        var propertyType = name.substring(0, AlterTable.length).toLowerCase();
+        var propertyType = name.toLowerCase();
+        // .substring(0, AlterTable.length).toLowerCase();
 
         //Add special constraints
         if (this.MODE_SQLSERVER) {
@@ -176,16 +184,18 @@ export class SqlSimpleParser {
             if (
               nameSkipCheck.indexOf(" ASC") !== -1 ||
               nameSkipCheck.indexOf(" DESC") !== -1 ||
-              nameSkipCheck.indexOf(" EXEC") !== -1 ||
-              nameSkipCheck.indexOf(" WITH") !== -1 ||
+              nameSkipCheck.indexOf("EXEC ") !== -1 ||
+              nameSkipCheck.indexOf("WITH ") !== -1 ||
               nameSkipCheck.indexOf(" ON") !== -1 ||
-              nameSkipCheck.indexOf(" ALTER") !== -1 ||
+              nameSkipCheck.indexOf("ALTER ") !== -1 ||
+              // comments already removed
               nameSkipCheck.indexOf("/*") !== -1 ||
-              nameSkipCheck.indexOf(" CONSTRAIN") !== -1 ||
-              nameSkipCheck.indexOf(" SET") !== -1 ||
+              nameSkipCheck.indexOf(" CONSTRAINT") !== -1 ||
+              nameSkipCheck.indexOf("SET ") !== -1 ||
               nameSkipCheck.indexOf(" NONCLUSTERED") !== -1 ||
-              nameSkipCheck.indexOf(" GO") !== -1 ||
-              nameSkipCheck.indexOf(" REFERENCES") !== -1
+              // no spaces desired
+              nameSkipCheck.indexOf("GO") !== -1 ||
+              nameSkipCheck.indexOf("REFERENCES ") !== -1
             ) {
               continue;
             }
