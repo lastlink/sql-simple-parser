@@ -173,7 +173,7 @@ export class SqlSimpleParser {
 
           if (
             propertyType.indexOf(CONSTRAINT) !== -1 &&
-            propertyType.indexOf(Primary_Key) !== -1
+            propertyType.indexOf(Foreign_Key) !== -1
           ) {
             propertyType = CONSTRAINT_Foreign_Key;
           }
@@ -218,7 +218,7 @@ export class SqlSimpleParser {
             //TODO: check for space? or end quantifier
             var firstSpaceIndex =
               name[0] == "[" && name.indexOf("]" + " ") !== -1
-                ? name.indexOf("]" + " ") 
+                ? name.indexOf("]" + " ")
                 : name.indexOf(" ");
 
             ExtendedProperties = name.substring(firstSpaceIndex + 1).trim();
@@ -228,10 +228,11 @@ export class SqlSimpleParser {
 
             name = this.RemoveNameQuantifiers(name);
           } else {
-            const columnQuantifiers = this.GetColumnQuantifiers()
+            const columnQuantifiers = this.GetColumnQuantifiers();
             //Get delimiter of column name
             var firstSpaceIndex =
-              name[0] == columnQuantifiers.Start && name.indexOf(columnQuantifiers.End + " ") !== -1
+              name[0] == columnQuantifiers.Start &&
+              name.indexOf(columnQuantifiers.End + " ") !== -1
                 ? name.indexOf(columnQuantifiers.End + " ")
                 : name.indexOf(" ");
 
@@ -275,8 +276,8 @@ export class SqlSimpleParser {
             //Add Primary Key to List
             this.primaryKeyList.push(primaryKeyModel);
           } else {
-            var start = i + 2;
-            var end = 0;
+            // var start = i + 2;
+            // var end = 0;
             if (
               propertyRow.indexOf(Primary_Key) !== -1 &&
               nameSkipCheck.indexOf("CLUSTERED") === -1
@@ -294,6 +295,38 @@ export class SqlSimpleParser {
               //Add Primary Key to List
               this.primaryKeyList.push(primaryKeyModel);
             } else {
+              var startIndex =
+                name.toLocaleLowerCase().indexOf("(");
+              var endIndex = name.indexOf(")") + 1;
+              var primaryKey = name
+                .substring(startIndex, endIndex)
+                .replace("(", "")
+                .replace(")", "")
+                .replace(/ASC/gi, "")
+                .trim();
+
+              const columnQuantifiers = this.GetColumnQuantifiers();
+              //Get delimiter of column name
+              var firstSpaceIndex =
+                primaryKey[0] == columnQuantifiers.Start &&
+                primaryKey.indexOf(columnQuantifiers.End + " ") !== -1
+                  ? primaryKey.indexOf(columnQuantifiers.End + " ")
+                  : primaryKey.indexOf(" ");
+
+              var primaryKeyRow =
+                firstSpaceIndex == -1
+                  ? primaryKey
+                  : primaryKey.substring(firstSpaceIndex + 1).trim();
+
+              //Create Primary Key
+              var primaryKeyModel = this.CreatePrimaryKey(
+                primaryKeyRow,
+                currentTableModel.Name
+              );
+
+              //Add Primary Key to List
+              this.primaryKeyList.push(primaryKeyModel);
+              /*
               while (end === 0) {
                 var primaryKeyRow = lines[start].trim();
 
@@ -318,6 +351,7 @@ export class SqlSimpleParser {
                 //Add Primary Key to List
                 this.primaryKeyList.push(primaryKeyModel);
               }
+              */
             }
           }
         }
@@ -438,11 +472,11 @@ export class SqlSimpleParser {
     }
     return new RegExp("//(.+)/.*/", "//.+/(.*)/");
   }
-  private GetColumnQuantifiers(){
-    let chars:ColumnQuantifiers={
+  private GetColumnQuantifiers() {
+    let chars: ColumnQuantifiers = {
       Start: '"',
-      End: '"'
-    }
+      End: '"',
+    };
     if (this.dialect == "mysql") {
       chars.Start = "`";
       chars.End = "`";
