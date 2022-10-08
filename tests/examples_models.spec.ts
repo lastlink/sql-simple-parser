@@ -65,7 +65,7 @@ describe("Example Sql Parsing", () => {
     await runSample();
     expect(1).toBeTruthy();
   });
-  it("Run Parser postgres Ex", async () => {
+  it("Run Parser sqlserver Ex", async () => {
     const filePath = "examples/adventureworks_mssql.sql";
     async function runSample() {
       // load sql
@@ -82,6 +82,33 @@ describe("Example Sql Parsing", () => {
 
       // write to json file
       await fs.writeFileSync("output-mssql.json", JSON.stringify(models, null, '\t'));
+    }
+    await runSample();
+    expect(1).toBeTruthy();
+  });
+
+  it("Run Parser postgres simple", async () => {
+    async function runSample() {
+      // load sql
+      var sql = `CREATE TABLE "humanresources_department" (
+        "departmentid" serial NOT NULL,
+        "name" Name NOT NULL,
+        "groupname" Name NOT NULL,
+        "modifieddate" timestamp NOT NULL,
+        PRIMARY KEY("departmentid")
+      );`
+      console.log(sql);
+
+      // run parser
+      const parser = new SqlSimpleParser('sqlserver')
+
+      // get models
+      const models = parser
+        .feed(sql)
+        .ToModel();
+
+      // write to json file
+      await fs.writeFileSync("output-pg_simple.json", JSON.stringify(models, null, '\t'));
     }
     await runSample();
     expect(1).toBeTruthy();
