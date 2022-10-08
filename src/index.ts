@@ -418,13 +418,13 @@ export class SqlSimpleParser {
       this.primaryKeyList.forEach((pk) => {
         // find table index
         var pkTableIndex = this.tableList.findIndex(
-          (t) => t.Name == pk.PrimaryKeyTableName
+          (t) => t.Name.toLocaleLowerCase() == pk.PrimaryKeyTableName.toLocaleLowerCase()
         );
 
         // find property index
         if (pkTableIndex > -1) {
           var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
-            (p) => p.Name == pk.PrimaryKeyName
+            (p) => p.Name.toLocaleLowerCase() == pk.PrimaryKeyName.toLocaleLowerCase()
           );
           if (propertyIndex > -1) {
             this.tableList[pkTableIndex].Properties[
@@ -438,7 +438,7 @@ export class SqlSimpleParser {
       this.foreignKeyList.forEach((fk) => {
         // find table index
         var pkTableIndex = this.tableList.findIndex(
-          (t) => t.Name == fk.ReferencesTableName
+          (t) => t.Name.toLocaleLowerCase() == fk.ReferencesTableName.toLocaleLowerCase()
         );
 
         // var fkTableIndex = this.tableList.findIndex(
@@ -448,7 +448,7 @@ export class SqlSimpleParser {
         // find property index
         if (pkTableIndex > -1) {
           var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
-            (p) => p.Name == fk.PrimaryKeyName
+            (p) => p.Name.toLocaleLowerCase() == fk.PrimaryKeyName.toLocaleLowerCase()
           );
           if (propertyIndex > -1) {
             this.tableList[pkTableIndex].Properties[

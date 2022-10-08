@@ -20538,7 +20538,7 @@
                             }
                         ],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "LastName",
