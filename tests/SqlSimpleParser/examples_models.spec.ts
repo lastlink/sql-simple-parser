@@ -151,7 +151,7 @@ describe("Example Sql Parsing", () => {
     const parser = new SqlSimpleParser("sqlserver");
 
     // get models
-    const result = parser.feed(sql).ToModel();
+    const result = parser.feed(sql).WithEnds().ToModel();
 
     // write to json file
     const dataKey = expect.getState().currentTestName || "unknown";
@@ -188,7 +188,7 @@ describe("Example Sql Parsing", () => {
     const parser = new SqlSimpleParser("postgres");
 
     // get models
-    const result = parser.feed(sql).ToModel();
+    const result = parser.feed(sql).WithEnds().WithoutEnds().ToModel();
 
     // write to json file
     const dataKey = expect.getState().currentTestName || "unknown";
