@@ -418,13 +418,17 @@ export class SqlSimpleParser {
       this.primaryKeyList.forEach((pk) => {
         // find table index
         var pkTableIndex = this.tableList.findIndex(
-          (t) => t.Name.toLocaleLowerCase() == pk.PrimaryKeyTableName.toLocaleLowerCase()
+          (t) =>
+            t.Name.toLocaleLowerCase() ==
+            pk.PrimaryKeyTableName.toLocaleLowerCase()
         );
 
         // find property index
         if (pkTableIndex > -1) {
           var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
-            (p) => p.Name.toLocaleLowerCase() == pk.PrimaryKeyName.toLocaleLowerCase()
+            (p) =>
+              p.Name.toLocaleLowerCase() ==
+              pk.PrimaryKeyName.toLocaleLowerCase()
           );
           if (propertyIndex > -1) {
             this.tableList[pkTableIndex].Properties[
@@ -438,7 +442,9 @@ export class SqlSimpleParser {
       this.foreignKeyList.forEach((fk) => {
         // find table index
         var pkTableIndex = this.tableList.findIndex(
-          (t) => t.Name.toLocaleLowerCase() == fk.ReferencesTableName.toLocaleLowerCase()
+          (t) =>
+            t.Name.toLocaleLowerCase() ==
+            fk.ReferencesTableName.toLocaleLowerCase()
         );
 
         // var fkTableIndex = this.tableList.findIndex(
@@ -448,7 +454,9 @@ export class SqlSimpleParser {
         // find property index
         if (pkTableIndex > -1) {
           var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
-            (p) => p.Name.toLocaleLowerCase() == fk.PrimaryKeyName.toLocaleLowerCase()
+            (p) =>
+              p.Name.toLocaleLowerCase() ==
+              fk.PrimaryKeyName.toLocaleLowerCase()
           );
           if (propertyIndex > -1) {
             this.tableList[pkTableIndex].Properties[
@@ -765,6 +773,90 @@ export class SqlSimpleParser {
    */
   private static isQuoteChar(char: string): boolean {
     return char === '"' || char === "'" || char === "`";
+  }
+  /**
+   * convert labels with start and end strings per database type
+   * @param label
+   * @returns
+   */
+  dbTypeEnds(label: string) {
+    let char1 = '"';
+    let char2 = '"';
+    if (this.dialect == "mysql") {
+      char1 = "`";
+      char2 = "`";
+    } else if (this.dialect == "sqlserver") {
+      char1 = "[";
+      char2 = "]";
+    }
+    return `${char1}${label}${char2}`;
+  }
+  WithEnds(): SqlSimpleParser {
+    this.tableList = this.tableList.map((table) => {
+      table.Name = this.dbTypeEnds(table.Name);
+      table.Properties = table.Properties.map((property) => {
+        property.Name = this.dbTypeEnds(property.Name);
+        property.TableName = this.dbTypeEnds(property.TableName);
+        return property;
+      });
+
+      return table;
+    });
+    this.primaryKeyList = this.primaryKeyList.map((primaryKey) => {
+      primaryKey.PrimaryKeyName = this.dbTypeEnds(primaryKey.PrimaryKeyName);
+      primaryKey.PrimaryKeyTableName = this.dbTypeEnds(
+        primaryKey.PrimaryKeyTableName
+      );
+      return primaryKey;
+    });
+    this.foreignKeyList = this.foreignKeyList.map((foreignKey) => {
+      foreignKey.PrimaryKeyName = this.dbTypeEnds(foreignKey.PrimaryKeyName);
+      foreignKey.ReferencesPropertyName = this.dbTypeEnds(
+        foreignKey.ReferencesPropertyName
+      );
+      foreignKey.PrimaryKeyTableName = this.dbTypeEnds(
+        foreignKey.PrimaryKeyTableName
+      );
+      foreignKey.ReferencesTableName = this.dbTypeEnds(
+        foreignKey.ReferencesTableName
+      );
+      return foreignKey;
+    });
+    return this;
+  }
+
+  WithoutEnds(): SqlSimpleParser {
+    this.tableList.map((table) => {
+      table.Name = this.RemoveNameQuantifiers(table.Name);
+      table.Properties = table.Properties.map((property) => {
+        property.Name = this.RemoveNameQuantifiers(property.Name);
+        property.TableName = this.RemoveNameQuantifiers(property.TableName);
+        return property;
+      });
+
+      return table;
+    });
+    this.primaryKeyList = this.primaryKeyList.map((primaryKey) => {
+      primaryKey.PrimaryKeyName = this.RemoveNameQuantifiers(primaryKey.PrimaryKeyName);
+      primaryKey.PrimaryKeyTableName = this.RemoveNameQuantifiers(
+        primaryKey.PrimaryKeyTableName
+      );
+      return primaryKey;
+    });
+    this.foreignKeyList = this.foreignKeyList.map((foreignKey) => {
+      foreignKey.PrimaryKeyName = this.RemoveNameQuantifiers(foreignKey.PrimaryKeyName);
+      foreignKey.ReferencesPropertyName = this.RemoveNameQuantifiers(
+        foreignKey.ReferencesPropertyName
+      );
+      foreignKey.PrimaryKeyTableName = this.RemoveNameQuantifiers(
+        foreignKey.PrimaryKeyTableName
+      );
+      foreignKey.ReferencesTableName = this.RemoveNameQuantifiers(
+        foreignKey.ReferencesTableName
+      );
+      return foreignKey;
+    });
+    return this;
   }
   /**
    * return text quantifiers for dialect

@@ -20522,18 +20522,18 @@
     "Example Sql Parsing Run Parser mssql simple": {
         "TableList": [
             {
-                "Name": "Persons",
+                "Name": "[Persons]",
                 "Properties": [
                     {
-                        "Name": "PersonID",
+                        "Name": "[PersonID]",
                         "ColumnProperties": "int NOT NULL",
-                        "TableName": "Persons",
+                        "TableName": "[Persons]",
                         "ForeignKey": [
                             {
-                                "PrimaryKeyTableName": "Orders",
-                                "PrimaryKeyName": "PersonID",
-                                "ReferencesPropertyName": "PersonID",
-                                "ReferencesTableName": "Persons",
+                                "PrimaryKeyTableName": "[Orders]",
+                                "PrimaryKeyName": "[PersonID]",
+                                "ReferencesPropertyName": "[PersonID]",
+                                "ReferencesTableName": "[Persons]",
                                 "IsDestination": true
                             }
                         ],
@@ -20541,33 +20541,33 @@
                         "IsPrimaryKey": true
                     },
                     {
-                        "Name": "LastName",
+                        "Name": "[LastName]",
                         "ColumnProperties": "varchar(255)",
-                        "TableName": "Persons",
+                        "TableName": "[Persons]",
                         "ForeignKey": [],
                         "IsForeignKey": false,
                         "IsPrimaryKey": false
                     },
                     {
-                        "Name": "FirstName",
+                        "Name": "[FirstName]",
                         "ColumnProperties": "varchar(255)",
-                        "TableName": "Persons",
+                        "TableName": "[Persons]",
                         "ForeignKey": [],
                         "IsForeignKey": false,
                         "IsPrimaryKey": false
                     },
                     {
-                        "Name": "Address",
+                        "Name": "[Address]",
                         "ColumnProperties": "varchar(255)",
-                        "TableName": "Persons",
+                        "TableName": "[Persons]",
                         "ForeignKey": [],
                         "IsForeignKey": false,
                         "IsPrimaryKey": false
                     },
                     {
-                        "Name": "City",
+                        "Name": "[City]",
                         "ColumnProperties": "varchar(255)",
-                        "TableName": "Persons",
+                        "TableName": "[Persons]",
                         "ForeignKey": [],
                         "IsForeignKey": false,
                         "IsPrimaryKey": false
@@ -20575,26 +20575,26 @@
                 ]
             },
             {
-                "Name": "Orders",
+                "Name": "[Orders]",
                 "Properties": [
                     {
-                        "Name": "OrderID",
+                        "Name": "[OrderID]",
                         "ColumnProperties": "int NOT NULL PRIMARY KEY",
-                        "TableName": "Orders",
+                        "TableName": "[Orders]",
                         "ForeignKey": [],
                         "IsForeignKey": false,
                         "IsPrimaryKey": true
                     },
                     {
-                        "Name": "PersonID",
+                        "Name": "[PersonID]",
                         "ColumnProperties": "int NOT NULL",
-                        "TableName": "Orders",
+                        "TableName": "[Orders]",
                         "ForeignKey": [
                             {
-                                "PrimaryKeyTableName": "Persons",
-                                "PrimaryKeyName": "PersonID",
-                                "ReferencesPropertyName": "PersonID",
-                                "ReferencesTableName": "Orders",
+                                "PrimaryKeyTableName": "[Persons]",
+                                "PrimaryKeyName": "[PersonID]",
+                                "ReferencesPropertyName": "[PersonID]",
+                                "ReferencesTableName": "[Orders]",
                                 "IsDestination": false
                             }
                         ],
@@ -20607,28 +20607,28 @@
         "Dialect": "sqlserver",
         "ForeignKeyList": [
             {
-                "PrimaryKeyTableName": "Orders",
-                "PrimaryKeyName": "PersonID",
-                "ReferencesPropertyName": "PersonID",
-                "ReferencesTableName": "Persons",
+                "PrimaryKeyTableName": "[Orders]",
+                "PrimaryKeyName": "[PersonID]",
+                "ReferencesPropertyName": "[PersonID]",
+                "ReferencesTableName": "[Persons]",
                 "IsDestination": true
             },
             {
-                "PrimaryKeyTableName": "Persons",
-                "PrimaryKeyName": "PersonID",
-                "ReferencesPropertyName": "PersonID",
-                "ReferencesTableName": "Orders",
+                "PrimaryKeyTableName": "[Persons]",
+                "PrimaryKeyName": "[PersonID]",
+                "ReferencesPropertyName": "[PersonID]",
+                "ReferencesTableName": "[Orders]",
                 "IsDestination": false
             }
         ],
         "PrimaryKeyList": [
             {
-                "PrimaryKeyTableName": "Persons",
-                "PrimaryKeyName": "PersonId"
+                "PrimaryKeyTableName": "[Persons]",
+                "PrimaryKeyName": "[PersonId]"
             },
             {
-                "PrimaryKeyTableName": "Orders",
-                "PrimaryKeyName": "OrderID"
+                "PrimaryKeyTableName": "[Orders]",
+                "PrimaryKeyName": "[OrderID]"
             }
         ]
     }
