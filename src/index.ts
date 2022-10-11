@@ -77,11 +77,11 @@ export class SqlSimpleParser {
    */
   feed(chunk: string): SqlSimpleParser {
     //
-    var removedComments = chunk
+    const removedComments = chunk
       // remove database comments, multiline, --, and //
       .replace(/\/\*[\s\S]*?\*\/|\/\/|--.*/g, "")
       .trim();
-    var cleanedLines = removedComments
+    const cleanedLines = removedComments
       .split("\n")
       // remove empty lines
       .filter((n) => n)
@@ -89,8 +89,8 @@ export class SqlSimpleParser {
       .map((n) => n.replace(/\s+/g, " ").trim());
 
     // combine lines that are in parenthesis
-    var lines: string[] = [];
-    var insertSameLine = false;
+    const lines: string[] = [];
+    let insertSameLine = false;
     cleanedLines.forEach((n) => {
       if (
         (lines.length > 0 &&
@@ -116,14 +116,14 @@ export class SqlSimpleParser {
     // foreignKeyList = [],
     // rowCell = null;
 
-    var currentTableModel = null;
+    let currentTableModel = null;
     //Parse SQL to objects
-    for (var i = 0; i < lines.length; i++) {
+    for (let i = 0; i < lines.length; i++) {
       // rowCell = null;
 
-      var tmp = lines[i].trim();
+      const tmp = lines[i].trim();
 
-      var propertyRow = tmp.toLowerCase().trim();
+      const propertyRow = tmp.toLowerCase().trim();
 
       if (propertyRow[0] == ")") {
         // close table
@@ -137,7 +137,7 @@ export class SqlSimpleParser {
       //Parse Table
       if (propertyRow.indexOf(CreateTable) != -1) {
         //Parse row
-        var name = tmp
+        let name = tmp
           .replace(this.stringToRegex(`/${CreateTable}/gi`), "")
           .trim();
 
@@ -159,13 +159,13 @@ export class SqlSimpleParser {
         propertyRow.indexOf(AlterTable) == -1
       ) {
         //Parse the row
-        var name = tmp.substring(
+        let name = tmp.substring(
           0,
           tmp.charAt(tmp.length - 1) === "," ? tmp.length - 1 : tmp.length
         );
 
         //Attempt to get the Key Type
-        var propertyType = name.toLowerCase();
+        let propertyType = name.toLowerCase();
         // .substring(0, AlterTable.length).toLowerCase();
 
         //Add special constraints
@@ -187,7 +187,7 @@ export class SqlSimpleParser {
 
         //Verify if this is a property that doesn't have a relationship (One minute of silence for the property)
         // TODO: make primary key check a regex match/ contains w/ () space or not
-        var normalProperty =
+        const normalProperty =
           !propertyType.match(/PRIMARY KEY\s?\(/gi) &&
           propertyType.indexOf(Foreign_Key) == -1 &&
           propertyType.indexOf(CONSTRAINT_Primary_Key) == -1 &&
@@ -223,7 +223,7 @@ export class SqlSimpleParser {
             }
             //Get delimiter of column name
             //TODO: check for space? or end quantifier
-            var firstSpaceIndex =
+            const firstSpaceIndex =
               name[0] == "[" && name.indexOf("]" + " ") !== -1
                 ? name.indexOf("]" + " ")
                 : name.indexOf(" ");
@@ -237,7 +237,7 @@ export class SqlSimpleParser {
           } else {
             const columnQuantifiers = this.GetColumnQuantifiers();
             //Get delimiter of column name
-            var firstSpaceIndex =
+            const firstSpaceIndex =
               name[0] == columnQuantifiers.Start &&
               name.indexOf(columnQuantifiers.End + " ") !== -1
                 ? name.indexOf(columnQuantifiers.End + " ")
@@ -252,7 +252,7 @@ export class SqlSimpleParser {
           }
 
           //Create Property
-          var propertyModel = this.CreateProperty(
+          const propertyModel = this.CreateProperty(
             name,
             currentTableModel.Name,
             null,
@@ -267,7 +267,7 @@ export class SqlSimpleParser {
             ExtendedProperties.toLocaleLowerCase().indexOf(Primary_Key) > -1
           ) {
             //Create Primary Key
-            var primaryKeyModel = this.CreatePrimaryKey(
+            const primaryKeyModel = this.CreatePrimaryKey(
               name,
               currentTableModel.Name
             );
@@ -282,12 +282,12 @@ export class SqlSimpleParser {
             propertyType.indexOf(CONSTRAINT_Primary_Key) != -1
           ) {
             if (!this.MODE_SQLSERVER) {
-              var primaryKey = name
+              const primaryKey = name
                 .replace(/PRIMARY KEY\s?\(/gi, "")
                 .replace(")", "");
 
               //Create Primary Key
-              var primaryKeyModel = this.CreatePrimaryKey(
+              const primaryKeyModel = this.CreatePrimaryKey(
                 primaryKey,
                 currentTableModel.Name
               );
@@ -295,18 +295,18 @@ export class SqlSimpleParser {
               //Add Primary Key to List
               this.primaryKeyList.push(primaryKeyModel);
             } else {
-              // var start = i + 2;
-              // var end = 0;
+              // let start = i + 2;
+              // let end = 0;
               if (
                 propertyRow.indexOf(Primary_Key) !== -1 &&
                 nameSkipCheck.indexOf("CLUSTERED") === -1
               ) {
-                var primaryKey = name
+                const primaryKey = name
                   .replace(/PRIMARY KEY\s?\(/gi, "")
                   .replace(")", "");
 
                 //Create Primary Key
-                var primaryKeyModel = this.CreatePrimaryKey(
+                const primaryKeyModel = this.CreatePrimaryKey(
                   primaryKey,
                   currentTableModel.Name
                 );
@@ -314,9 +314,9 @@ export class SqlSimpleParser {
                 //Add Primary Key to List
                 this.primaryKeyList.push(primaryKeyModel);
               } else {
-                var startIndex = name.toLocaleLowerCase().indexOf("(");
-                var endIndex = name.indexOf(")") + 1;
-                var primaryKey = name
+                const startIndex = name.toLocaleLowerCase().indexOf("(");
+                const endIndex = name.indexOf(")") + 1;
+                const primaryKey = name
                   .substring(startIndex, endIndex)
                   .replace("(", "")
                   .replace(")", "")
@@ -325,19 +325,19 @@ export class SqlSimpleParser {
 
                 const columnQuantifiers = this.GetColumnQuantifiers();
                 //Get delimiter of column name
-                var firstSpaceIndex =
+                const firstSpaceIndex =
                   primaryKey[0] == columnQuantifiers.Start &&
                   primaryKey.indexOf(columnQuantifiers.End + " ") !== -1
                     ? primaryKey.indexOf(columnQuantifiers.End + " ")
                     : primaryKey.indexOf(" ");
 
-                var primaryKeyRow =
+                const primaryKeyRow =
                   firstSpaceIndex == -1
                     ? primaryKey
                     : primaryKey.substring(firstSpaceIndex + 1).trim();
 
                 //Create Primary Key
-                var primaryKeyModel = this.CreatePrimaryKey(
+                const primaryKeyModel = this.CreatePrimaryKey(
                   primaryKeyRow,
                   currentTableModel.Name
                 );
@@ -346,7 +346,7 @@ export class SqlSimpleParser {
                 this.primaryKeyList.push(primaryKeyModel);
                 /*
               while (end === 0) {
-                var primaryKeyRow = lines[start].trim();
+                let primaryKeyRow = lines[start].trim();
 
                 if (primaryKeyRow.indexOf(")") !== -1) {
                   end = 1;
@@ -361,7 +361,7 @@ export class SqlSimpleParser {
                 primaryKeyRow = this.ParseSQLServerName(primaryKeyRow, true);
 
                 //Create Primary Key
-                var primaryKeyModel = this.CreatePrimaryKey(
+                let primaryKeyModel = this.CreatePrimaryKey(
                   primaryKeyRow,
                   currentTableModel.Name
                 );
@@ -382,10 +382,10 @@ export class SqlSimpleParser {
           if (!this.MODE_SQLSERVER || propertyRow.indexOf(AlterTable) == -1) {
             this.ParseMySQLForeignKey(name, currentTableModel);
           } else {
-            var completeRow = name;
+            let completeRow = name;
 
             if (nameSkipCheck.indexOf("REFERENCES") === -1) {
-              var referencesRow = lines[i + 1].trim();
+              const referencesRow = lines[i + 1].trim();
               completeRow =
                 "ALTER TABLE [dbo].[" +
                 currentTableModel.Name +
@@ -402,12 +402,12 @@ export class SqlSimpleParser {
       } else if (propertyRow.indexOf(AlterTable) != -1) {
         if (this.MODE_SQLSERVER) {
           //Parse the row
-          var alterTableRow = tmp.substring(
+          const alterTableRow = tmp.substring(
             0,
             tmp.charAt(tmp.length - 1) === "," ? tmp.length - 1 : tmp.length
           );
-          var referencesRow = lines[i + 1].trim();
-          var completeRow = alterTableRow + " " + referencesRow;
+          const referencesRow = lines[i + 1].trim();
+          const completeRow = alterTableRow + " " + referencesRow;
 
           this.ParseSQLServerForeignKey(completeRow, currentTableModel);
         }
@@ -417,7 +417,7 @@ export class SqlSimpleParser {
     if (this.primaryKeyList.length > 0) {
       this.primaryKeyList.forEach((pk) => {
         // find table index
-        var pkTableIndex = this.tableList.findIndex(
+        const pkTableIndex = this.tableList.findIndex(
           (t) =>
             t.Name.toLocaleLowerCase() ==
             pk.PrimaryKeyTableName.toLocaleLowerCase()
@@ -425,7 +425,7 @@ export class SqlSimpleParser {
 
         // find property index
         if (pkTableIndex > -1) {
-          var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
+          const propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
             (p) =>
               p.Name.toLocaleLowerCase() ==
               pk.PrimaryKeyName.toLocaleLowerCase()
@@ -441,19 +441,19 @@ export class SqlSimpleParser {
     if (this.foreignKeyList.length > 0) {
       this.foreignKeyList.forEach((fk) => {
         // find table index
-        var pkTableIndex = this.tableList.findIndex(
+        const pkTableIndex = this.tableList.findIndex(
           (t) =>
             t.Name.toLocaleLowerCase() ==
             fk.ReferencesTableName.toLocaleLowerCase()
         );
 
-        // var fkTableIndex = this.tableList.findIndex(
+        // let fkTableIndex = this.tableList.findIndex(
         //   (t) => t.Name == fk.PrimaryKeyTableName
         // );
 
         // find property index
         if (pkTableIndex > -1) {
-          var propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
+          const propertyIndex = this.tableList[pkTableIndex].Properties.findIndex(
             (p) =>
               p.Name.toLocaleLowerCase() ==
               fk.PrimaryKeyName.toLocaleLowerCase()
@@ -471,7 +471,7 @@ export class SqlSimpleParser {
         }
 
         // if (fkTableIndex > -1) {
-        //   var propertyIndex = this.tableList[fkTableIndex].Properties.findIndex(
+        //   let propertyIndex = this.tableList[fkTableIndex].Properties.findIndex(
         //     (p) => p.Name == fk.PrimaryKeyName
         //   );
         //   if (propertyIndex > -1) {
@@ -504,7 +504,7 @@ export class SqlSimpleParser {
     primaryKeyName: string,
     primaryKeyTableName: string
   ) {
-    var primaryKey: PrimaryKeyModel = {
+    const primaryKey: PrimaryKeyModel = {
       PrimaryKeyTableName: primaryKeyTableName,
       PrimaryKeyName: this.RemoveNameQuantifiers(primaryKeyName),
     };
@@ -519,8 +519,8 @@ export class SqlSimpleParser {
     isPrimaryKey: boolean,
     columnProps: string
   ) {
-    var isForeignKey = foreignKey !== undefined && foreignKey !== null;
-    var property: PropertyModel = {
+    const isForeignKey = foreignKey !== undefined && foreignKey !== null;
+    const property: PropertyModel = {
       Name: name,
       ColumnProperties: columnProps,
       TableName: tableName,
@@ -533,34 +533,34 @@ export class SqlSimpleParser {
   }
 
   private ParseMySQLForeignKey(name: string, currentTableModel: TableModel) {
-    var referencesIndex = name.toLowerCase().indexOf("references");
-    var foreignKeySQL = name.substring(0, referencesIndex);
-    var referencesSQL = name.substring(referencesIndex, name.length);
+    const referencesIndex = name.toLowerCase().indexOf("references");
+    const foreignKeySQL = name.substring(0, referencesIndex);
+    let referencesSQL = name.substring(referencesIndex, name.length);
 
     //Remove references syntax
     referencesSQL = referencesSQL.replace(/REFERENCES /gi, "");
 
     //Get Table and Property Index
-    var referencedTableIndex = referencesSQL.indexOf("(");
-    var referencedPropertyIndex = referencesSQL.indexOf(")");
+    const referencedTableIndex = referencesSQL.indexOf("(");
+    const referencedPropertyIndex = referencesSQL.indexOf(")");
 
     //Get Referenced Table
-    var referencedTableName = referencesSQL.substring(0, referencedTableIndex);
+    const referencedTableName = referencesSQL.substring(0, referencedTableIndex);
 
     //Get Referenced Key
-    var referencedPropertyName = referencesSQL.substring(
+    const referencedPropertyName = referencesSQL.substring(
       referencedTableIndex + 1,
       referencedPropertyIndex
     );
 
     //Get ForeignKey
-    var foreignKey = foreignKeySQL
+    const foreignKey = foreignKeySQL
       .replace(/FOREIGN KEY\s?\(/gi, "")
       .replace(")", "")
       .replace(" ", "");
 
     //Create ForeignKey
-    var foreignKeyOriginModel = this.CreateForeignKey(
+    const foreignKeyOriginModel = this.CreateForeignKey(
       foreignKey,
       currentTableModel.Name,
       referencedPropertyName,
@@ -572,7 +572,7 @@ export class SqlSimpleParser {
     this.foreignKeyList.push(foreignKeyOriginModel);
 
     //Create ForeignKey
-    var foreignKeyDestinationModel = this.CreateForeignKey(
+    const foreignKeyDestinationModel = this.CreateForeignKey(
       referencedPropertyName,
       referencedTableName,
       foreignKey,
@@ -588,10 +588,11 @@ export class SqlSimpleParser {
     name: string,
     currentTableModel: TableModel | null
   ) {
-    var referencesIndex = name.toLowerCase().indexOf("references");
+    const referencesIndex = name.toLowerCase().indexOf("references");
+    let foreignKeySQL = "";
 
     if (name.toLowerCase().indexOf(`${Foreign_Key}(`) !== -1) {
-      var foreignKeySQL = name
+      foreignKeySQL = name
         .substring(
           name.toLowerCase().indexOf(`${Foreign_Key}(`),
           referencesIndex
@@ -599,7 +600,7 @@ export class SqlSimpleParser {
         .replace(/FOREIGN KEY\(/gi, "")
         .replace(")", "");
     } else {
-      var foreignKeySQL = name
+      foreignKeySQL = name
         .substring(
           name.toLowerCase().indexOf(`${Foreign_Key}(`),
           referencesIndex
@@ -608,9 +609,9 @@ export class SqlSimpleParser {
         .replace(")", "");
     }
 
-    var referencesSQL = name.substring(referencesIndex, name.length);
+    let referencesSQL = name.substring(referencesIndex, name.length);
     const nameSkipCheck = name.toUpperCase().trim();
-    var alterTableName = name
+    let alterTableName = name
       .substring(0, nameSkipCheck.indexOf("WITH"))
       .replace(/ALTER TABLE /gi, "");
 
@@ -624,11 +625,11 @@ export class SqlSimpleParser {
       referencesSQL = referencesSQL.replace(/REFERENCES /gi, "");
 
       //Get Table and Property Index
-      var referencedTableIndex = referencesSQL.indexOf("(");
-      var referencedPropertyIndex = referencesSQL.indexOf(")");
+      const referencedTableIndex = referencesSQL.indexOf("(");
+      const referencedPropertyIndex = referencesSQL.indexOf(")");
 
       //Get Referenced Table
-      var referencedTableName = referencesSQL.substring(
+      let referencedTableName = referencesSQL.substring(
         0,
         referencedTableIndex
       );
@@ -637,7 +638,7 @@ export class SqlSimpleParser {
       referencedTableName = this.ParseSQLServerName(referencedTableName);
 
       //Get Referenced Key
-      var referencedPropertyName = referencesSQL.substring(
+      let referencedPropertyName = referencesSQL.substring(
         referencedTableIndex + 1,
         referencedPropertyIndex
       );
@@ -646,7 +647,7 @@ export class SqlSimpleParser {
       referencedPropertyName = this.ParseSQLServerName(referencedPropertyName);
 
       //Get ForeignKey
-      var foreignKey = foreignKeySQL
+      let foreignKey = foreignKeySQL
         .replace(/FOREIGN KEY\s?\(/gi, "")
         .replace(")", "");
 
@@ -657,7 +658,7 @@ export class SqlSimpleParser {
       alterTableName = this.ParseSQLServerName(alterTableName);
 
       //Create ForeignKey
-      var foreignKeyOriginModel = this.CreateForeignKey(
+      const foreignKeyOriginModel = this.CreateForeignKey(
         foreignKey,
         alterTableName,
         referencedPropertyName,
@@ -669,7 +670,7 @@ export class SqlSimpleParser {
       this.foreignKeyList.push(foreignKeyOriginModel);
 
       //Create ForeignKey
-      var foreignKeyDestinationModel = this.CreateForeignKey(
+      const foreignKeyDestinationModel = this.CreateForeignKey(
         referencedPropertyName,
         referencedTableName,
         foreignKey,
@@ -689,7 +690,7 @@ export class SqlSimpleParser {
     referencesTableName: string,
     isDestination: boolean
   ) {
-    var foreignKey: ForeignKeyModel = {
+    const foreignKey: ForeignKeyModel = {
       PrimaryKeyTableName: this.RemoveNameQuantifiers(primaryKeyTableName),
       PrimaryKeyName: this.RemoveNameQuantifiers(primaryKeyName),
       ReferencesPropertyName: this.RemoveNameQuantifiers(
@@ -755,7 +756,7 @@ export class SqlSimpleParser {
   }
 
   private CreateTable(name: string) {
-    var table: TableModel = {
+    const table: TableModel = {
       Name: name,
       Properties: [],
     };
@@ -772,7 +773,7 @@ export class SqlSimpleParser {
    * @param char Character to be evaluated.
    */
   private static isQuoteChar(char: string): boolean {
-    return char === '"' || char === "'" || char === "`";
+    return char === "\"" || char === "'" || char === "`";
   }
   /**
    * convert labels with start and end strings per database type
@@ -780,8 +781,8 @@ export class SqlSimpleParser {
    * @returns
    */
   dbTypeEnds(label: string) {
-    let char1 = '"';
-    let char2 = '"';
+    let char1 = "\"";
+    let char2 = "\"";
     if (this.dialect == "mysql") {
       char1 = "`";
       char2 = "`";
@@ -863,9 +864,9 @@ export class SqlSimpleParser {
    * @returns json
    */
   GetColumnQuantifiers() {
-    let chars: ColumnQuantifiers = {
-      Start: '"',
-      End: '"',
+    const chars: ColumnQuantifiers = {
+      Start: "\"",
+      End: "\"",
     };
     if (this.dialect == "mysql") {
       chars.Start = "`";

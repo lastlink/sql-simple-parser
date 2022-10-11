@@ -1,6 +1,6 @@
 {
   "name": "@funktechno/sqlsimpleparser",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -9,18 +9,27 @@
   },
   "scripts": {
     "test:sqlite": "npx tsx ./examples/example.sqlite.ts",
-    "test": "jest -c ./jest.config.ts --forceExit --verbose -i --no-cache",
-    "test:coverage": "jest --forceExit --coverage --verbose",
-    "test:watch": "jest --watchAll",
-    "lint": "eslint",
+    "test": "jest -c ./jest.config.ts --forceExit --verbose -i --no-cache --detectOpenHandles",
+    "test:coverage": "jest --forceExit --coverage --verbose --detectOpenHandles",
+    "test:watch": "jest --watchAll --detectOpenHandles",
+    "lint": "tsc --noEmit && eslint \"{src,client}/**/*.{js,ts}\"",
+    "lint:fix": "tsc --noEmit && eslint \"{src,client}/**/*.{js,ts}\" --fix",
     "build": "tsc",
     "build:help": "tsc --help",
     "build:drawio": "tsc ./src/index.ts --moduleResolution node --outFile ./lib/single.js --module amd",
     "build:client": "npm run mkdir:dist && browserify client/index.ts -p [ tsify --noImplicitAny ] > dist/sqlsimpleparser.js",
     "mkdir:dist": "node ./build/createDistFolder.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funktechno/sql-simple-parser.git"
+  },
   "author": "lastlink",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funktechno/sql-simple-parser/issues"
+  },
+  "homepage": "https://github.com/funktechno/sql-simple-parser#readme",
   "devDependencies": {
     "@types/jest": "^29.0.3",
     "@types/lodash": "^4.14.185",
