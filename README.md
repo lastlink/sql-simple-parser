@@ -85,3 +85,8 @@ const models = parser
 ## Development
 * `npm install`
 * `npm test` or use vscode debugger **Jest single run**
+
+## Deploy
+* `npm publish --access public`
+* Testing
+  * `npm pack`
