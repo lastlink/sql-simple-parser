@@ -9,9 +9,9 @@
   },
   "scripts": {
     "test:sqlite": "npx tsx ./examples/example.sqlite.ts",
-    "test": "jest -c ./jest.config.ts --forceExit --verbose -i --no-cache",
-    "test:coverage": "jest --forceExit --coverage --verbose",
-    "test:watch": "jest --watchAll",
+    "test": "jest -c ./jest.config.ts --forceExit --verbose -i --no-cache --detectOpenHandles",
+    "test:coverage": "jest --forceExit --coverage --verbose --detectOpenHandles",
+    "test:watch": "jest --watchAll --detectOpenHandles",
     "lint": "eslint",
     "build": "tsc",
     "build:help": "tsc --help",
