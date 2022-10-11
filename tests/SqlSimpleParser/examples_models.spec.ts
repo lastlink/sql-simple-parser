@@ -6,7 +6,7 @@ describe("Example Sql Parsing", () => {
   it("Run Parser Sqlite Ex", async () => {
     const filePath = "examples/chinook-database-2.0.1_sqlite.sql";
     // load sql
-    var sql = await fs.readFileSync(filePath, "utf8");
+    const sql = await fs.readFileSync(filePath, "utf8");
     // console.log(sql);
 
     // run parser
@@ -36,7 +36,7 @@ describe("Example Sql Parsing", () => {
   it("Run Parser mysql Ex", async () => {
     const filePath = "examples/adventureworks_mysql.sql";
     // load sql
-    var sql = await fs.readFileSync(filePath, "utf8");
+    const sql = await fs.readFileSync(filePath, "utf8");
     // console.log(sql);
 
     // run parser
@@ -67,7 +67,7 @@ describe("Example Sql Parsing", () => {
   it("Run Parser postgres Ex", async () => {
     const filePath = "examples/adventureworks_pg.sql";
     // load sql
-    var sql = await fs.readFileSync(filePath, "utf8");
+    const sql = await fs.readFileSync(filePath, "utf8");
     // console.log(sql);
 
     // run parser
@@ -98,7 +98,7 @@ describe("Example Sql Parsing", () => {
   it("Run Parser sqlserver Ex", async () => {
     const filePath = "examples/adventureworks_mssql.sql";
     // load sql
-    var sql = await fs.readFileSync(filePath, "utf8");
+    const sql = await fs.readFileSync(filePath, "utf8");
     // console.log(sql);
 
     // run parser
@@ -129,7 +129,7 @@ describe("Example Sql Parsing", () => {
 
   it("Run Parser mssql simple", async () => {
     // load sql
-    var sql = `CREATE TABLE Persons
+    const sql = `CREATE TABLE Persons
     (
         PersonID int NOT NULL,
         LastName varchar(255),
@@ -175,7 +175,7 @@ describe("Example Sql Parsing", () => {
 
   it("Run Parser postgres simple", async () => {
     // load sql
-    var sql = `CREATE TABLE "humanresources_department" (
+    const sql = `CREATE TABLE "humanresources_department" (
         "departmentid" serial NOT NULL,
         "name" Name NOT NULL,
         "groupname" Name NOT NULL,
