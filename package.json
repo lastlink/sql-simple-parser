@@ -3,6 +3,7 @@
   "version": "0.0.2",
   "description": "",
   "main": "lib/index.js",
+  "types": "lib/index.d.ts",
   "engines": {
     "node": "16.x"
   },
@@ -15,7 +16,8 @@
     "build": "tsc",
     "build:help": "tsc --help",
     "build:drawio": "tsc ./src/index.ts --moduleResolution node --outFile ./lib/single.js --module amd",
-    "build:client": "mkdir -p dist && browserify client/index.ts -p [ tsify --noImplicitAny ] > dist/sqlsimpleparser.js"
+    "build:client": "npm run mkdir:dist && browserify client/index.ts -p [ tsify --noImplicitAny ] > dist/sqlsimpleparser.js",
+    "mkdir:dist": "node ./build/createDistFolder.js"
   },
   "author": "lastlink",
   "license": "MIT",
