@@ -2,6 +2,7 @@
 sql ddl parser to support extensions for drawio
 
 ## Getting started
+* `npm install --save @funktechno/sqlsimpleparser`
 * how to use:
 ```typescript
 import { SqlSimpleParser } from "@funktechno/sqlsimpleparser"
