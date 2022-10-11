@@ -109,3 +109,4 @@ tests
 .github
 funktechno-sqlsimpleparser*
 coverage
+build
