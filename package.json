@@ -19,8 +19,16 @@
     "build:client": "npm run mkdir:dist && browserify client/index.ts -p [ tsify --noImplicitAny ] > dist/sqlsimpleparser.js",
     "mkdir:dist": "node ./build/createDistFolder.js"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/funktechno/sql-simple-parser.git"
+  },
   "author": "lastlink",
   "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/funktechno/sql-simple-parser/issues"
+  },
+  "homepage": "https://github.com/funktechno/sql-simple-parser#readme",
   "devDependencies": {
     "@types/jest": "^29.0.3",
     "@types/lodash": "^4.14.185",
