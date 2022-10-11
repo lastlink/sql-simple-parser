@@ -181,6 +181,17 @@ describe("Example Sql Parsing", () => {
         "groupname" Name NOT NULL,
         "modifieddate" timestamp NOT NULL,
         PRIMARY KEY("departmentid")
+      );
+      
+      CREATE TABLE "humanresources_employeedepartmenthistory" (
+        "businessentityid" int(4) NOT NULL,
+        "departmentid" int(2) NOT NULL,
+        "shiftid" int(2) NOT NULL,
+        "startdate" date NOT NULL,
+        "enddate" date,
+        "modifieddate" timestamp NOT NULL,
+        PRIMARY KEY("businessentityid","departmentid","shiftid","startdate"),
+        FOREIGN KEY ("departmentid") REFERENCES "humanresources_department"("departmentid")
       );`;
     // console.log(sql);
 
