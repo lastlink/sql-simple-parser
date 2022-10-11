@@ -101,11 +101,11 @@ typings/
 
 # TernJS port file
 .tern-port
-lib
 deps/mermaid
 samples/output.md
 junit.xml
 output-*.json
 tests
 .github
+funktechno-sqlsimpleparser*
 coverage
