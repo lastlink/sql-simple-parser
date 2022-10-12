@@ -1,6 +1,6 @@
 {
   "name": "@funktechno/sqlsimpleparser",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -24,6 +24,18 @@
     "type": "git",
     "url": "git+https://github.com/funktechno/sql-simple-parser.git"
   },
+  "keywords": [
+    "typescript",
+    "sql",
+    "draw.io",
+    "diagram",
+    "UML",
+    "plugins",
+    "erdiagram",
+    "sql-parser",
+    "plugins",
+    "sql-ddl"
+  ],
   "author": "lastlink",
   "license": "MIT",
   "bugs": {
