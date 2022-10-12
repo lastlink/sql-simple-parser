@@ -16,15 +16,15 @@ var sql = `CREATE TABLE "humanresources_department" (
 );
 
 CREATE TABLE "humanresources_employeedepartmenthistory" (
-        "businessentityid" int(4) NOT NULL,
-        "departmentid" int(2) NOT NULL,
-        "shiftid" int(2) NOT NULL,
-        "startdate" date NOT NULL,
-        "enddate" date,
-        "modifieddate" timestamp NOT NULL,
-        PRIMARY KEY("businessentityid","departmentid","shiftid","startdate"),
-        FOREIGN KEY ("departmentid") REFERENCES "humanresources_department"("departmentid")
-	);
+  "businessentityid" int(4) NOT NULL,
+  "departmentid" int(2) NOT NULL,
+  "shiftid" int(2) NOT NULL,
+  "startdate" date NOT NULL,
+  "enddate" date,
+  "modifieddate" timestamp NOT NULL,
+  PRIMARY KEY("businessentityid","departmentid","shiftid","startdate"),
+  FOREIGN KEY ("departmentid") REFERENCES "humanresources_department"("departmentid")
+);
 `
 
 // run parser
@@ -38,141 +38,141 @@ const models = parser
 * outputs
 ```json
 {
-	"TableList": [
-		{
-			"Name": "humanresources_department",
-			"Properties": [
-				{
-					"Name": "departmentid",
-					"ColumnProperties": "serial NOT NULL",
-					"TableName": "humanresources_department",
-					"ForeignKey": [
-						{
-							"PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
-							"PrimaryKeyName": "departmentid",
-							"ReferencesPropertyName": "departmentid",
-							"ReferencesTableName": "humanresources_department",
-							"IsDestination": true
-						}
-					],
-					"IsForeignKey": false,
-					"IsPrimaryKey": true
-				},
-				{
-					"Name": "name",
-					"ColumnProperties": "Name NOT NULL",
-					"TableName": "humanresources_department",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				},
-				{
-					"Name": "groupname",
-					"ColumnProperties": "Name NOT NULL",
-					"TableName": "humanresources_department",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				},
-				{
-					"Name": "modifieddate",
-					"ColumnProperties": "timestamp NOT NULL",
-					"TableName": "humanresources_department",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				}
-			]
-		},
-		{
-			"Name": "humanresources_employeedepartmenthistory",
-			"Properties": [
-				{
-					"Name": "businessentityid",
-					"ColumnProperties": "int(4) NOT NULL",
-					"TableName": "humanresources_employeedepartmenthistory",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				},
-				{
-					"Name": "departmentid",
-					"ColumnProperties": "int(2) NOT NULL",
-					"TableName": "humanresources_employeedepartmenthistory",
-					"ForeignKey": [
-						{
-							"PrimaryKeyTableName": "humanresources_department",
-							"PrimaryKeyName": "departmentid",
-							"ReferencesPropertyName": "departmentid",
-							"ReferencesTableName": "humanresources_employeedepartmenthistory",
-							"IsDestination": false
-						}
-					],
-					"IsForeignKey": true,
-					"IsPrimaryKey": false
-				},
-				{
-					"Name": "shiftid",
-					"ColumnProperties": "int(2) NOT NULL",
-					"TableName": "humanresources_employeedepartmenthistory",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				},
-				{
-					"Name": "startdate",
-					"ColumnProperties": "date NOT NULL",
-					"TableName": "humanresources_employeedepartmenthistory",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				},
-				{
-					"Name": "enddate",
-					"ColumnProperties": "date",
-					"TableName": "humanresources_employeedepartmenthistory",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				},
-				{
-					"Name": "modifieddate",
-					"ColumnProperties": "timestamp NOT NULL",
-					"TableName": "humanresources_employeedepartmenthistory",
-					"ForeignKey": [],
-					"IsForeignKey": false,
-					"IsPrimaryKey": false
-				}
-			]
-		}
-	],
-	"Dialect": "postgres",
-	"ForeignKeyList": [
-		{
-			"PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
-			"PrimaryKeyName": "departmentid",
-			"ReferencesPropertyName": "departmentid",
-			"ReferencesTableName": "humanresources_department",
-			"IsDestination": true
-		},
-		{
-			"PrimaryKeyTableName": "humanresources_department",
-			"PrimaryKeyName": "departmentid",
-			"ReferencesPropertyName": "departmentid",
-			"ReferencesTableName": "humanresources_employeedepartmenthistory",
-			"IsDestination": false
-		}
-	],
-	"PrimaryKeyList": [
-		{
-			"PrimaryKeyTableName": "humanresources_department",
-			"PrimaryKeyName": "departmentid"
-		},
-		{
-			"PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
-			"PrimaryKeyName": "businessentityid,departmentid,shiftid,startdate"
-		}
-	]
+  "TableList": [
+    {
+      "Name": "humanresources_department",
+      "Properties": [
+        {
+          "Name": "departmentid",
+          "ColumnProperties": "serial NOT NULL",
+          "TableName": "humanresources_department",
+          "ForeignKey": [
+            {
+              "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+              "PrimaryKeyName": "departmentid",
+              "ReferencesPropertyName": "departmentid",
+              "ReferencesTableName": "humanresources_department",
+              "IsDestination": true
+            }
+          ],
+          "IsForeignKey": false,
+          "IsPrimaryKey": true
+        },
+        {
+          "Name": "name",
+          "ColumnProperties": "Name NOT NULL",
+          "TableName": "humanresources_department",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        },
+        {
+          "Name": "groupname",
+          "ColumnProperties": "Name NOT NULL",
+          "TableName": "humanresources_department",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        },
+        {
+          "Name": "modifieddate",
+          "ColumnProperties": "timestamp NOT NULL",
+          "TableName": "humanresources_department",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        }
+      ]
+    },
+    {
+      "Name": "humanresources_employeedepartmenthistory",
+      "Properties": [
+        {
+          "Name": "businessentityid",
+          "ColumnProperties": "int(4) NOT NULL",
+          "TableName": "humanresources_employeedepartmenthistory",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        },
+        {
+          "Name": "departmentid",
+          "ColumnProperties": "int(2) NOT NULL",
+          "TableName": "humanresources_employeedepartmenthistory",
+          "ForeignKey": [
+            {
+              "PrimaryKeyTableName": "humanresources_department",
+              "PrimaryKeyName": "departmentid",
+              "ReferencesPropertyName": "departmentid",
+              "ReferencesTableName": "humanresources_employeedepartmenthistory",
+              "IsDestination": false
+            }
+          ],
+          "IsForeignKey": true,
+          "IsPrimaryKey": false
+        },
+        {
+          "Name": "shiftid",
+          "ColumnProperties": "int(2) NOT NULL",
+          "TableName": "humanresources_employeedepartmenthistory",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        },
+        {
+          "Name": "startdate",
+          "ColumnProperties": "date NOT NULL",
+          "TableName": "humanresources_employeedepartmenthistory",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        },
+        {
+          "Name": "enddate",
+          "ColumnProperties": "date",
+          "TableName": "humanresources_employeedepartmenthistory",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        },
+        {
+          "Name": "modifieddate",
+          "ColumnProperties": "timestamp NOT NULL",
+          "TableName": "humanresources_employeedepartmenthistory",
+          "ForeignKey": [],
+          "IsForeignKey": false,
+          "IsPrimaryKey": false
+        }
+      ]
+    }
+  ],
+  "Dialect": "postgres",
+  "ForeignKeyList": [
+    {
+      "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+      "PrimaryKeyName": "departmentid",
+      "ReferencesPropertyName": "departmentid",
+      "ReferencesTableName": "humanresources_department",
+      "IsDestination": true
+    },
+    {
+      "PrimaryKeyTableName": "humanresources_department",
+      "PrimaryKeyName": "departmentid",
+      "ReferencesPropertyName": "departmentid",
+      "ReferencesTableName": "humanresources_employeedepartmenthistory",
+      "IsDestination": false
+    }
+  ],
+  "PrimaryKeyList": [
+    {
+      "PrimaryKeyTableName": "humanresources_department",
+      "PrimaryKeyName": "departmentid"
+    },
+    {
+      "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+      "PrimaryKeyName": "businessentityid,departmentid,shiftid,startdate"
+    }
+  ]
 }
 ```
 * there are some [example](./examples) sql files
