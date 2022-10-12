@@ -30,6 +30,6 @@ export async function updateExpected<T>(testData: string, key: string, result: T
     expectedResults[key] = result;
 
     const filePath = path.join(base_DIR, testData + ".json");
-    const stringResults = JSON.stringify(expectedResults, null, 4);
+    const stringResults = JSON.stringify(expectedResults, null, 2);
     await fs.writeFileSync(filePath, stringResults);
 }

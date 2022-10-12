@@ -93,7 +93,7 @@ const models = parser
           "TableName": "humanresources_employeedepartmenthistory",
           "ForeignKey": [],
           "IsForeignKey": false,
-          "IsPrimaryKey": false
+          "IsPrimaryKey": true
         },
         {
           "Name": "departmentid",
@@ -109,7 +109,7 @@ const models = parser
             }
           ],
           "IsForeignKey": true,
-          "IsPrimaryKey": false
+          "IsPrimaryKey": true
         },
         {
           "Name": "shiftid",
@@ -117,7 +117,7 @@ const models = parser
           "TableName": "humanresources_employeedepartmenthistory",
           "ForeignKey": [],
           "IsForeignKey": false,
-          "IsPrimaryKey": false
+          "IsPrimaryKey": true
         },
         {
           "Name": "startdate",
@@ -125,7 +125,7 @@ const models = parser
           "TableName": "humanresources_employeedepartmenthistory",
           "ForeignKey": [],
           "IsForeignKey": false,
-          "IsPrimaryKey": false
+          "IsPrimaryKey": true
         },
         {
           "Name": "enddate",
@@ -170,7 +170,19 @@ const models = parser
     },
     {
       "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
-      "PrimaryKeyName": "businessentityid,departmentid,shiftid,startdate"
+      "PrimaryKeyName": "businessentityid"
+    },
+    {
+      "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+      "PrimaryKeyName": "departmentid"
+    },
+    {
+      "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+      "PrimaryKeyName": "shiftid"
+    },
+    {
+      "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+      "PrimaryKeyName": "startdate"
     }
   ]
 }
