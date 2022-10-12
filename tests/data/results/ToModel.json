@@ -727,7 +727,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "TrackId",
@@ -743,7 +743,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     }
                 ]
             }
@@ -952,7 +952,11 @@
             },
             {
                 "PrimaryKeyTableName": "PlaylistTrack",
-                "PrimaryKeyName": "PlaylistId,TrackId"
+                "PrimaryKeyName": "PlaylistId"
+            },
+            {
+                "PrimaryKeyTableName": "PlaylistTrack",
+                "PrimaryKeyName": "TrackId"
             }
         ]
     },
@@ -1307,7 +1311,7 @@
                         "TableName": "adventureworks_countryregioncurrency",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "CurrencyCode",
@@ -1315,7 +1319,7 @@
                         "TableName": "adventureworks_countryregioncurrency",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ModifiedDate",
@@ -2532,7 +2536,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "CreditCardID",
@@ -2548,7 +2552,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ModifiedDate",
@@ -2740,7 +2744,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "IllustrationID",
@@ -2756,7 +2760,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ModifiedDate",
@@ -2785,7 +2789,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ProductDescriptionID",
@@ -2801,7 +2805,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "CultureID",
@@ -2817,7 +2821,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ModifiedDate",
@@ -2939,7 +2943,7 @@
                         "TableName": "adventureworks_vendorcontact",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ContactID",
@@ -2955,7 +2959,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ContactTypeID",
@@ -3053,7 +3057,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "DepartmentID",
@@ -3069,7 +3073,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ShiftID",
@@ -3085,7 +3089,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "StartDate",
@@ -3093,7 +3097,7 @@
                         "TableName": "adventureworks_employeedepartmenthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "EndDate",
@@ -3130,7 +3134,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "RateChangeDate",
@@ -3138,7 +3142,7 @@
                         "TableName": "adventureworks_employeepayhistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "Rate",
@@ -3619,7 +3623,7 @@
                         "TableName": "adventureworks_salesterritoryhistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "TerritoryID",
@@ -3627,7 +3631,7 @@
                         "TableName": "adventureworks_salesterritoryhistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "StartDate",
@@ -3635,7 +3639,7 @@
                         "TableName": "adventureworks_salesterritoryhistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "EndDate",
@@ -3924,7 +3928,7 @@
                         "TableName": "adventureworks_productcosthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "StartDate",
@@ -3932,7 +3936,7 @@
                         "TableName": "adventureworks_productcosthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "EndDate",
@@ -3969,7 +3973,7 @@
                         "TableName": "adventureworks_productdocument",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "DocumentID",
@@ -3977,7 +3981,7 @@
                         "TableName": "adventureworks_productdocument",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ModifiedDate",
@@ -3998,7 +4002,7 @@
                         "TableName": "adventureworks_productinventory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "LocationID",
@@ -4006,7 +4010,7 @@
                         "TableName": "adventureworks_productinventory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "Shelf",
@@ -4059,7 +4063,7 @@
                         "TableName": "adventureworks_productlistpricehistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "StartDate",
@@ -4067,7 +4071,7 @@
                         "TableName": "adventureworks_productlistpricehistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "EndDate",
@@ -4104,7 +4108,7 @@
                         "TableName": "adventureworks_productproductphoto",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ProductPhotoID",
@@ -4112,7 +4116,7 @@
                         "TableName": "adventureworks_productproductphoto",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "Primary",
@@ -4210,7 +4214,7 @@
                         "TableName": "adventureworks_productvendor",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "VendorID",
@@ -4218,7 +4222,7 @@
                         "TableName": "adventureworks_productvendor",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "AverageLeadTime",
@@ -4303,7 +4307,7 @@
                         "TableName": "adventureworks_purchaseorderdetail",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "PurchaseOrderDetailID",
@@ -4311,7 +4315,7 @@
                         "TableName": "adventureworks_purchaseorderdetail",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "DueDate",
@@ -4396,7 +4400,7 @@
                         "TableName": "adventureworks_salespersonquotahistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "QuotaDate",
@@ -4404,7 +4408,7 @@
                         "TableName": "adventureworks_salespersonquotahistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "SalesQuota",
@@ -4494,7 +4498,7 @@
                         "TableName": "adventureworks_specialofferproduct",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ProductID",
@@ -4502,7 +4506,7 @@
                         "TableName": "adventureworks_specialofferproduct",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "rowguid",
@@ -4584,7 +4588,7 @@
                         "TableName": "adventureworks_storecontact",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ContactID",
@@ -4592,7 +4596,7 @@
                         "TableName": "adventureworks_storecontact",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ContactTypeID",
@@ -4868,7 +4872,7 @@
                         "TableName": "adventureworks_customeraddress",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "AddressID",
@@ -4876,7 +4880,7 @@
                         "TableName": "adventureworks_customeraddress",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "AddressTypeID",
@@ -4913,7 +4917,7 @@
                         "TableName": "adventureworks_employeeaddress",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "AddressID",
@@ -4921,7 +4925,7 @@
                         "TableName": "adventureworks_employeeaddress",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "rowguid",
@@ -5171,7 +5175,7 @@
                         "TableName": "adventureworks_vendoraddress",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "AddressID",
@@ -5179,7 +5183,7 @@
                         "TableName": "adventureworks_vendoraddress",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "AddressTypeID",
@@ -5208,7 +5212,7 @@
                         "TableName": "adventureworks_workorderrouting",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ProductID",
@@ -5216,7 +5220,7 @@
                         "TableName": "adventureworks_workorderrouting",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "OperationSequence",
@@ -5224,7 +5228,7 @@
                         "TableName": "adventureworks_workorderrouting",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "LocationID",
@@ -5309,7 +5313,7 @@
                         "TableName": "adventureworks_salesorderdetail",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "SalesOrderDetailID",
@@ -5317,7 +5321,7 @@
                         "TableName": "adventureworks_salesorderdetail",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "CarrierTrackingNumber",
@@ -5402,7 +5406,7 @@
                         "TableName": "adventureworks_salesorderheadersalesreason",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "SalesReasonID",
@@ -5410,7 +5414,7 @@
                         "TableName": "adventureworks_salesorderheadersalesreason",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ModifiedDate",
@@ -5705,7 +5709,11 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_countryregioncurrency",
-                "PrimaryKeyName": "CountryRegionCode,CurrencyCode"
+                "PrimaryKeyName": "CountryRegionCode"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_countryregioncurrency",
+                "PrimaryKeyName": "CurrencyCode"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_creditcard",
@@ -5797,7 +5805,11 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_contactcreditcard",
-                "PrimaryKeyName": "ContactID,CreditCardID"
+                "PrimaryKeyName": "ContactID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_contactcreditcard",
+                "PrimaryKeyName": "CreditCardID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_employee",
@@ -5805,11 +5817,23 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productmodelillustration",
-                "PrimaryKeyName": "ProductModelID,IllustrationID"
+                "PrimaryKeyName": "ProductModelID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productmodelillustration",
+                "PrimaryKeyName": "IllustrationID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productmodelproductdescriptionculture",
-                "PrimaryKeyName": "ProductModelID,ProductDescriptionID,CultureID"
+                "PrimaryKeyName": "ProductModelID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productmodelproductdescriptionculture",
+                "PrimaryKeyName": "ProductDescriptionID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productmodelproductdescriptionculture",
+                "PrimaryKeyName": "CultureID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_salesterritory",
@@ -5817,7 +5841,11 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_vendorcontact",
-                "PrimaryKeyName": "VendorID,ContactID"
+                "PrimaryKeyName": "VendorID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_vendorcontact",
+                "PrimaryKeyName": "ContactID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_customer",
@@ -5825,11 +5853,27 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_employeedepartmenthistory",
-                "PrimaryKeyName": "EmployeeID,DepartmentID,ShiftID,StartDate"
+                "PrimaryKeyName": "EmployeeID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_employeedepartmenthistory",
+                "PrimaryKeyName": "DepartmentID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_employeedepartmenthistory",
+                "PrimaryKeyName": "ShiftID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_employeedepartmenthistory",
+                "PrimaryKeyName": "StartDate"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_employeepayhistory",
-                "PrimaryKeyName": "EmployeeID,RateChangeDate"
+                "PrimaryKeyName": "EmployeeID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_employeepayhistory",
+                "PrimaryKeyName": "RateChangeDate"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_jobcandidate",
@@ -5849,7 +5893,15 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_salesterritoryhistory",
-                "PrimaryKeyName": "SalesPersonID,TerritoryID,StartDate"
+                "PrimaryKeyName": "SalesPersonID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_salesterritoryhistory",
+                "PrimaryKeyName": "TerritoryID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_salesterritoryhistory",
+                "PrimaryKeyName": "StartDate"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_stateprovince",
@@ -5869,23 +5921,43 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productcosthistory",
-                "PrimaryKeyName": "ProductID,StartDate"
+                "PrimaryKeyName": "ProductID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productcosthistory",
+                "PrimaryKeyName": "StartDate"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productdocument",
-                "PrimaryKeyName": "ProductID,DocumentID"
+                "PrimaryKeyName": "ProductID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productdocument",
+                "PrimaryKeyName": "DocumentID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productinventory",
-                "PrimaryKeyName": "ProductID,LocationID"
+                "PrimaryKeyName": "ProductID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productinventory",
+                "PrimaryKeyName": "LocationID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productlistpricehistory",
-                "PrimaryKeyName": "ProductID,StartDate"
+                "PrimaryKeyName": "ProductID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productlistpricehistory",
+                "PrimaryKeyName": "StartDate"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productproductphoto",
-                "PrimaryKeyName": "ProductID,ProductPhotoID"
+                "PrimaryKeyName": "ProductID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productproductphoto",
+                "PrimaryKeyName": "ProductPhotoID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productreview",
@@ -5893,15 +5965,27 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_productvendor",
-                "PrimaryKeyName": "ProductID,VendorID"
+                "PrimaryKeyName": "ProductID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_productvendor",
+                "PrimaryKeyName": "VendorID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_purchaseorderdetail",
-                "PrimaryKeyName": "PurchaseOrderID,PurchaseOrderDetailID"
+                "PrimaryKeyName": "PurchaseOrderID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_purchaseorderdetail",
+                "PrimaryKeyName": "PurchaseOrderDetailID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_salespersonquotahistory",
-                "PrimaryKeyName": "SalesPersonID,QuotaDate"
+                "PrimaryKeyName": "SalesPersonID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_salespersonquotahistory",
+                "PrimaryKeyName": "QuotaDate"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_shoppingcartitem",
@@ -5909,7 +5993,11 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_specialofferproduct",
-                "PrimaryKeyName": "SpecialOfferID,ProductID"
+                "PrimaryKeyName": "SpecialOfferID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_specialofferproduct",
+                "PrimaryKeyName": "ProductID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_store",
@@ -5917,7 +6005,11 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_storecontact",
-                "PrimaryKeyName": "CustomerID,ContactID"
+                "PrimaryKeyName": "CustomerID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_storecontact",
+                "PrimaryKeyName": "ContactID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_transactionhistory",
@@ -5933,11 +6025,19 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_customeraddress",
-                "PrimaryKeyName": "CustomerID,AddressID"
+                "PrimaryKeyName": "CustomerID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_customeraddress",
+                "PrimaryKeyName": "AddressID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_employeeaddress",
-                "PrimaryKeyName": "EmployeeID,AddressID"
+                "PrimaryKeyName": "EmployeeID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_employeeaddress",
+                "PrimaryKeyName": "AddressID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_salesorderheader",
@@ -5945,19 +6045,39 @@
             },
             {
                 "PrimaryKeyTableName": "adventureworks_vendoraddress",
-                "PrimaryKeyName": "VendorID,AddressID"
+                "PrimaryKeyName": "VendorID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_vendoraddress",
+                "PrimaryKeyName": "AddressID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_workorderrouting",
-                "PrimaryKeyName": "WorkOrderID,ProductID,OperationSequence"
+                "PrimaryKeyName": "WorkOrderID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_workorderrouting",
+                "PrimaryKeyName": "ProductID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_workorderrouting",
+                "PrimaryKeyName": "OperationSequence"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_salesorderdetail",
-                "PrimaryKeyName": "SalesOrderID,SalesOrderDetailID"
+                "PrimaryKeyName": "SalesOrderID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_salesorderdetail",
+                "PrimaryKeyName": "SalesOrderDetailID"
             },
             {
                 "PrimaryKeyTableName": "adventureworks_salesorderheadersalesreason",
-                "PrimaryKeyName": "SalesOrderID,SalesReasonID"
+                "PrimaryKeyName": "SalesOrderID"
+            },
+            {
+                "PrimaryKeyTableName": "adventureworks_salesorderheadersalesreason",
+                "PrimaryKeyName": "SalesReasonID"
             }
         ]
     },
@@ -7364,7 +7484,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "illustrationid",
@@ -7380,7 +7500,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "modifieddate",
@@ -7409,7 +7529,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "productdescriptionid",
@@ -7425,7 +7545,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "cultureid",
@@ -7441,7 +7561,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "modifieddate",
@@ -7615,7 +7735,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "currencycode",
@@ -7631,7 +7751,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "modifieddate",
@@ -8026,7 +8146,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "personid",
@@ -8034,7 +8154,7 @@
                         "TableName": "person_businessentitycontact",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "contacttypeid",
@@ -8050,7 +8170,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "rowguid",
@@ -8087,7 +8207,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "emailaddressid",
@@ -8095,7 +8215,7 @@
                         "TableName": "person_emailaddress",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "emailaddress",
@@ -8193,7 +8313,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "phonenumber",
@@ -8201,7 +8321,7 @@
                         "TableName": "person_personphone",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "phonenumbertypeid",
@@ -8217,7 +8337,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "modifieddate",
@@ -8645,7 +8765,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "creditcardid",
@@ -8661,7 +8781,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "modifieddate",
@@ -8690,7 +8810,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "departmentid",
@@ -8706,7 +8826,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "shiftid",
@@ -8722,7 +8842,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "startdate",
@@ -8730,7 +8850,7 @@
                         "TableName": "humanresources_employeedepartmenthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "enddate",
@@ -8767,7 +8887,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "ratechangedate",
@@ -8775,7 +8895,7 @@
                         "TableName": "humanresources_employeepayhistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "rate",
@@ -9160,7 +9280,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "startdate",
@@ -9168,7 +9288,7 @@
                         "TableName": "production_productcosthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "enddate",
@@ -9213,7 +9333,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "locationid",
@@ -9229,7 +9349,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "shelf",
@@ -9290,7 +9410,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "startdate",
@@ -9298,7 +9418,7 @@
                         "TableName": "production_productlistpricehistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "enddate",
@@ -9343,7 +9463,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "productphotoid",
@@ -9359,7 +9479,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "primary",
@@ -9582,7 +9702,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "businessentityid",
@@ -9598,7 +9718,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "averageleadtime",
@@ -10053,7 +10173,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "productid",
@@ -10069,7 +10189,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "rowguid",
@@ -10106,7 +10226,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "addressid",
@@ -10122,7 +10242,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "addresstypeid",
@@ -10138,7 +10258,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "rowguid",
@@ -10175,7 +10295,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "modifieddate",
@@ -10199,7 +10319,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     }
                 ]
             },
@@ -10220,7 +10340,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "productid",
@@ -10228,7 +10348,7 @@
                         "TableName": "production_workorderrouting",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "operationsequence",
@@ -10236,7 +10356,7 @@
                         "TableName": "production_workorderrouting",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "locationid",
@@ -10337,7 +10457,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "purchaseorderdetailid",
@@ -10345,7 +10465,7 @@
                         "TableName": "purchasing_purchaseorderdetail",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "duedate",
@@ -10430,7 +10550,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "quotadate",
@@ -10438,7 +10558,7 @@
                         "TableName": "sales_salespersonquotahistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "salesquota",
@@ -10483,7 +10603,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "territoryid",
@@ -10499,7 +10619,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "startdate",
@@ -10507,7 +10627,7 @@
                         "TableName": "sales_salesterritoryhistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "enddate",
@@ -10949,7 +11069,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "salesorderdetailid",
@@ -10957,7 +11077,7 @@
                         "TableName": "sales_salesorderdetail",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "carriertrackingnumber",
@@ -11042,7 +11162,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "salesreasonid",
@@ -11058,7 +11178,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "modifieddate",
@@ -18998,11 +19118,23 @@
             },
             {
                 "PrimaryKeyTableName": "production_productmodelillustration",
-                "PrimaryKeyName": "productmodelid,illustrationid"
+                "PrimaryKeyName": "productmodelid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productmodelillustration",
+                "PrimaryKeyName": "illustrationid"
             },
             {
                 "PrimaryKeyTableName": "production_productmodelproductdescriptionculture",
-                "PrimaryKeyName": "productmodelid,productdescriptionid,cultureid"
+                "PrimaryKeyName": "productmodelid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productmodelproductdescriptionculture",
+                "PrimaryKeyName": "productdescriptionid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productmodelproductdescriptionculture",
+                "PrimaryKeyName": "cultureid"
             },
             {
                 "PrimaryKeyTableName": "production_productsubcategory",
@@ -19014,7 +19146,11 @@
             },
             {
                 "PrimaryKeyTableName": "sales_countryregioncurrency",
-                "PrimaryKeyName": "countryregioncode,currencycode"
+                "PrimaryKeyName": "countryregioncode"
+            },
+            {
+                "PrimaryKeyTableName": "sales_countryregioncurrency",
+                "PrimaryKeyName": "currencycode"
             },
             {
                 "PrimaryKeyTableName": "sales_currencyrate",
@@ -19030,11 +19166,23 @@
             },
             {
                 "PrimaryKeyTableName": "person_businessentitycontact",
-                "PrimaryKeyName": "businessentityid,personid,contacttypeid"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "person_businessentitycontact",
+                "PrimaryKeyName": "personid"
+            },
+            {
+                "PrimaryKeyTableName": "person_businessentitycontact",
+                "PrimaryKeyName": "contacttypeid"
             },
             {
                 "PrimaryKeyTableName": "person_emailaddress",
-                "PrimaryKeyName": "businessentityid,emailaddressid"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "person_emailaddress",
+                "PrimaryKeyName": "emailaddressid"
             },
             {
                 "PrimaryKeyTableName": "person_password",
@@ -19042,7 +19190,15 @@
             },
             {
                 "PrimaryKeyTableName": "person_personphone",
-                "PrimaryKeyName": "businessentityid,phonenumber,phonenumbertypeid"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "person_personphone",
+                "PrimaryKeyName": "phonenumber"
+            },
+            {
+                "PrimaryKeyTableName": "person_personphone",
+                "PrimaryKeyName": "phonenumbertypeid"
             },
             {
                 "PrimaryKeyTableName": "person_stateprovince",
@@ -19054,15 +19210,35 @@
             },
             {
                 "PrimaryKeyTableName": "sales_personcreditcard",
-                "PrimaryKeyName": "businessentityid,creditcardid"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "sales_personcreditcard",
+                "PrimaryKeyName": "creditcardid"
             },
             {
                 "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
-                "PrimaryKeyName": "businessentityid,departmentid,shiftid,startdate"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+                "PrimaryKeyName": "departmentid"
+            },
+            {
+                "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+                "PrimaryKeyName": "shiftid"
+            },
+            {
+                "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+                "PrimaryKeyName": "startdate"
             },
             {
                 "PrimaryKeyTableName": "humanresources_employeepayhistory",
-                "PrimaryKeyName": "businessentityid,ratechangedate"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "humanresources_employeepayhistory",
+                "PrimaryKeyName": "ratechangedate"
             },
             {
                 "PrimaryKeyTableName": "humanresources_jobcandidate",
@@ -19082,19 +19258,35 @@
             },
             {
                 "PrimaryKeyTableName": "production_productcosthistory",
-                "PrimaryKeyName": "productid,startdate"
+                "PrimaryKeyName": "productid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productcosthistory",
+                "PrimaryKeyName": "startdate"
             },
             {
                 "PrimaryKeyTableName": "production_productinventory",
-                "PrimaryKeyName": "productid,locationid"
+                "PrimaryKeyName": "productid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productinventory",
+                "PrimaryKeyName": "locationid"
             },
             {
                 "PrimaryKeyTableName": "production_productlistpricehistory",
-                "PrimaryKeyName": "productid,startdate"
+                "PrimaryKeyName": "productid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productlistpricehistory",
+                "PrimaryKeyName": "startdate"
             },
             {
                 "PrimaryKeyTableName": "production_productproductphoto",
-                "PrimaryKeyName": "productid,productphotoid"
+                "PrimaryKeyName": "productid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productproductphoto",
+                "PrimaryKeyName": "productphotoid"
             },
             {
                 "PrimaryKeyTableName": "production_transactionhistory",
@@ -19106,7 +19298,11 @@
             },
             {
                 "PrimaryKeyTableName": "purchasing_productvendor",
-                "PrimaryKeyName": "productid,businessentityid"
+                "PrimaryKeyName": "productid"
+            },
+            {
+                "PrimaryKeyTableName": "purchasing_productvendor",
+                "PrimaryKeyName": "businessentityid"
             },
             {
                 "PrimaryKeyTableName": "purchasing_purchaseorderheader",
@@ -19126,31 +19322,71 @@
             },
             {
                 "PrimaryKeyTableName": "sales_specialofferproduct",
-                "PrimaryKeyName": "specialofferid,productid"
+                "PrimaryKeyName": "specialofferid"
+            },
+            {
+                "PrimaryKeyTableName": "sales_specialofferproduct",
+                "PrimaryKeyName": "productid"
             },
             {
                 "PrimaryKeyTableName": "person_businessentityaddress",
-                "PrimaryKeyName": "businessentityid,addressid,addresstypeid"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "person_businessentityaddress",
+                "PrimaryKeyName": "addressid"
+            },
+            {
+                "PrimaryKeyTableName": "person_businessentityaddress",
+                "PrimaryKeyName": "addresstypeid"
             },
             {
                 "PrimaryKeyTableName": "production_productdocument",
-                "PrimaryKeyName": "productid,documentnode"
+                "PrimaryKeyName": "productid"
+            },
+            {
+                "PrimaryKeyTableName": "production_productdocument",
+                "PrimaryKeyName": "documentnode"
             },
             {
                 "PrimaryKeyTableName": "production_workorderrouting",
-                "PrimaryKeyName": "workorderid,productid,operationsequence"
+                "PrimaryKeyName": "workorderid"
+            },
+            {
+                "PrimaryKeyTableName": "production_workorderrouting",
+                "PrimaryKeyName": "productid"
+            },
+            {
+                "PrimaryKeyTableName": "production_workorderrouting",
+                "PrimaryKeyName": "operationsequence"
             },
             {
                 "PrimaryKeyTableName": "purchasing_purchaseorderdetail",
-                "PrimaryKeyName": "purchaseorderid,purchaseorderdetailid"
+                "PrimaryKeyName": "purchaseorderid"
+            },
+            {
+                "PrimaryKeyTableName": "purchasing_purchaseorderdetail",
+                "PrimaryKeyName": "purchaseorderdetailid"
             },
             {
                 "PrimaryKeyTableName": "sales_salespersonquotahistory",
-                "PrimaryKeyName": "businessentityid,quotadate"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "sales_salespersonquotahistory",
+                "PrimaryKeyName": "quotadate"
             },
             {
                 "PrimaryKeyTableName": "sales_salesterritoryhistory",
-                "PrimaryKeyName": "businessentityid,territoryid,startdate"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "sales_salesterritoryhistory",
+                "PrimaryKeyName": "territoryid"
+            },
+            {
+                "PrimaryKeyTableName": "sales_salesterritoryhistory",
+                "PrimaryKeyName": "startdate"
             },
             {
                 "PrimaryKeyTableName": "sales_store",
@@ -19166,11 +19402,19 @@
             },
             {
                 "PrimaryKeyTableName": "sales_salesorderdetail",
-                "PrimaryKeyName": "salesorderid,salesorderdetailid"
+                "PrimaryKeyName": "salesorderid"
+            },
+            {
+                "PrimaryKeyTableName": "sales_salesorderdetail",
+                "PrimaryKeyName": "salesorderdetailid"
             },
             {
                 "PrimaryKeyTableName": "sales_salesorderheadersalesreason",
-                "PrimaryKeyName": "salesorderid,salesreasonid"
+                "PrimaryKeyName": "salesorderid"
+            },
+            {
+                "PrimaryKeyTableName": "sales_salesorderheadersalesreason",
+                "PrimaryKeyName": "salesreasonid"
             }
         ]
     },
@@ -19585,7 +19829,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "AddressType",
@@ -19929,7 +20173,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "Culture",
@@ -19937,7 +20181,7 @@
                         "TableName": "SalesLT.ProductModelProductDescription",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "rowguid",
@@ -19982,7 +20226,7 @@
                         "TableName": "SalesLT.SalesOrderDetail",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "OrderQty",
@@ -20438,7 +20682,7 @@
             },
             {
                 "PrimaryKeyTableName": "SalesLT.CustomerAddress",
-                "PrimaryKeyName": ",AddressID"
+                "PrimaryKeyName": "AddressID"
             },
             {
                 "PrimaryKeyTableName": "SalesLT.Product",
@@ -20458,11 +20702,15 @@
             },
             {
                 "PrimaryKeyTableName": "SalesLT.ProductModelProductDescription",
-                "PrimaryKeyName": ",ProductDescriptionID ,Culture"
+                "PrimaryKeyName": "ProductDescriptionID"
+            },
+            {
+                "PrimaryKeyTableName": "SalesLT.ProductModelProductDescription",
+                "PrimaryKeyName": "Culture"
             },
             {
                 "PrimaryKeyTableName": "SalesLT.SalesOrderDetail",
-                "PrimaryKeyName": ",SalesOrderDetailID"
+                "PrimaryKeyName": "SalesOrderDetailID"
             },
             {
                 "PrimaryKeyTableName": "SalesLT.SalesOrderHeader",
@@ -20526,7 +20774,7 @@
                         "TableName": "humanresources_employeedepartmenthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "departmentid",
@@ -20542,7 +20790,7 @@
                             }
                         ],
                         "IsForeignKey": true,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "shiftid",
@@ -20550,7 +20798,7 @@
                         "TableName": "humanresources_employeedepartmenthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "startdate",
@@ -20558,7 +20806,7 @@
                         "TableName": "humanresources_employeedepartmenthistory",
                         "ForeignKey": [],
                         "IsForeignKey": false,
-                        "IsPrimaryKey": false
+                        "IsPrimaryKey": true
                     },
                     {
                         "Name": "enddate",
@@ -20603,7 +20851,19 @@
             },
             {
                 "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
-                "PrimaryKeyName": "businessentityid,departmentid,shiftid,startdate"
+                "PrimaryKeyName": "businessentityid"
+            },
+            {
+                "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+                "PrimaryKeyName": "departmentid"
+            },
+            {
+                "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+                "PrimaryKeyName": "shiftid"
+            },
+            {
+                "PrimaryKeyTableName": "humanresources_employeedepartmenthistory",
+                "PrimaryKeyName": "startdate"
             }
         ]
     },
