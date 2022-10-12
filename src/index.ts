@@ -273,7 +273,7 @@ export class SqlSimpleParser {
             );
 
             //Add Primary Key to List
-            this.primaryKeyList.push(primaryKeyModel);
+            this.primaryKeyList = this.primaryKeyList.concat(primaryKeyModel);
           }
         } else {
           //Parse Primary Key
@@ -293,7 +293,7 @@ export class SqlSimpleParser {
               );
 
               //Add Primary Key to List
-              this.primaryKeyList.push(primaryKeyModel);
+              this.primaryKeyList = this.primaryKeyList.concat(primaryKeyModel);
             } else {
               // let start = i + 2;
               // let end = 0;
@@ -312,7 +312,7 @@ export class SqlSimpleParser {
                 );
 
                 //Add Primary Key to List
-                this.primaryKeyList.push(primaryKeyModel);
+                this.primaryKeyList = this.primaryKeyList.concat(primaryKeyModel);
               } else {
                 const startIndex = name.toLocaleLowerCase().indexOf("(");
                 const endIndex = name.indexOf(")") + 1;
@@ -343,7 +343,7 @@ export class SqlSimpleParser {
                 );
 
                 //Add Primary Key to List
-                this.primaryKeyList.push(primaryKeyModel);
+                this.primaryKeyList = this.primaryKeyList.concat(primaryKeyModel);
                 /*
               while (end === 0) {
                 let primaryKeyRow = lines[start].trim();
@@ -503,13 +503,22 @@ export class SqlSimpleParser {
   private CreatePrimaryKey(
     primaryKeyName: string,
     primaryKeyTableName: string
-  ) {
-    const primaryKey: PrimaryKeyModel = {
-      PrimaryKeyTableName: primaryKeyTableName,
-      PrimaryKeyName: this.RemoveNameQuantifiers(primaryKeyName),
-    };
+  ):PrimaryKeyModel[] {
+    const primaryKeyNames = this.RemoveNameQuantifiers(primaryKeyName)
+      .split(",")
+      .filter((n) => n)
+      // remove multiple spaces
+      .map((n) => n.replace(/\s+/g, " ").trim());
+    const primaryKeys:PrimaryKeyModel[] = [];
+    primaryKeyNames.forEach(name => {
+      const primaryKey: PrimaryKeyModel = {
+        PrimaryKeyTableName: primaryKeyTableName,
+        PrimaryKeyName: name,
+      };
+      primaryKeys.push(primaryKey);
+    });
 
-    return primaryKey;
+    return primaryKeys;
   }
 
   private CreateProperty(
