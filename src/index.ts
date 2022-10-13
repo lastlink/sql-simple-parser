@@ -80,6 +80,7 @@ export class SqlSimpleParser {
     const removedComments = chunk
       // remove database comments, multiline, --, and //
       .replace(/\/\*[\s\S]*?\*\/|\/\/|--.*/g, "")
+      .replace(/IF NOT EXISTS/gi, "")
       .trim();
     const cleanedLines = removedComments
       .split("\n")
@@ -92,20 +93,38 @@ export class SqlSimpleParser {
     const lines: string[] = [];
     let insertSameLine = false;
     cleanedLines.forEach((n) => {
-      if (
-        (lines.length > 0 &&
-          n[0] == "(" &&
-          lines[lines.length - 1].toLocaleLowerCase().indexOf(CreateTable) ==
-            -1) ||
-        insertSameLine
-      ) {
-        if (lines.length > 0) {
-          insertSameLine = true;
-          lines[lines.length - 1] += n;
-          if (n[0] == ")") insertSameLine = false;
-        }
-      } else {
-        lines.push(n);
+      if (lines.length > 0){
+          if((n[0] == "(" &&
+              lines[lines.length - 1].toLocaleLowerCase().indexOf(CreateTable) ==
+                  -1) ||
+              insertSameLine) {
+              if (lines.length > 0) {
+                  insertSameLine = true;
+                  lines[lines.length - 1] += ` ${n}`;
+                  if (n[0] == ")")
+                      insertSameLine = false;
+              }
+          }
+          else if(lines[lines.length - 1].match(/CONSTRAINT/gi) && 
+              (n.match(/FOREIGN KEY/gi) && !n.match(/CONSTRAINT/gi))
+          ){
+              lines[lines.length - 1] += ` ${n}`;
+          }
+          // add to previous line if current has references and previous has foreign key
+          else if(lines[lines.length - 1].match(/FOREIGN KEY/gi) && 
+              (n.match(/REFERENCES/gi) && !n.match(/FOREIGN KEY/gi))
+          ){
+              lines[lines.length - 1] += ` ${n}`;
+          }
+          else if(n.substring(0,2).toUpperCase() == "ON"){
+              lines[lines.length - 1] += ` ${n}`;
+          }
+          else {
+              lines.push(n);
+          }
+      }
+      else {
+          lines.push(n);
       }
     });
     // dx = 0,
@@ -543,7 +562,8 @@ export class SqlSimpleParser {
 
   private ParseMySQLForeignKey(name: string, currentTableModel: TableModel) {
     const referencesIndex = name.toLowerCase().indexOf("references");
-    const foreignKeySQL = name.substring(0, referencesIndex);
+    let foreignKeySQL = name.substring(0, referencesIndex);
+    foreignKeySQL = foreignKeySQL.substring(foreignKeySQL.toUpperCase().indexOf("FOREIGN KEY"));
     let referencesSQL = name.substring(referencesIndex, name.length);
 
     //Remove references syntax
