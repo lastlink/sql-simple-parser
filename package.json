@@ -1,11 +1,11 @@
 {
   "name": "@funktechno/sqlsimpleparser",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
   "engines": {
-    "node": "16.x"
+    "node": ">=16.x"
   },
   "scripts": {
     "test:sqlite": "npx tsx ./examples/example.sqlite.ts",
